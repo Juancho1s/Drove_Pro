@@ -32,3 +32,25 @@ const validationRules = [
     .isEmail()
     .notEmpty(),
 ];
+
+class userController {
+
+  static async addUser(req, res){
+
+  }
+
+  static async getUserByEmail(req, res){
+
+  }
+
+  static async updateUser(req, res){
+
+  }
+
+
+}
+
+module.exports = {
+  validationRules,
+  userController,
+}
