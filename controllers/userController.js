@@ -32,3 +32,12 @@ const validationRules = [
     .isEmail()
     .notEmpty(),
 ];
+
+class UsersController {
+  
+}
+
+module.exports = {
+  validationRules,
+  UsersController,
+}
