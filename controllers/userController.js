@@ -10,7 +10,7 @@ const validationRules = [
     .withMessage("User name is required"),
 
   /* Checks for the second name to be valid format */
-  check("secondName")
+  check("lastName")
     .notEmpty()
     .isAlphanumeric()
     .withMessage("Second Name is Required"),
@@ -50,12 +50,31 @@ const validationRules = [
 /* This calss will contain all the refered method to the users, these methods are called controllers */
 class userController {
 
+  /* This method works in order to add a new user with the above validations */
   static async addUser(req, res){
-    /* This method works in order to add a new user with the above validations */
+    let err = validationResult(req);
+
+    if (!err.isEmpty()) {
+      res.send(errors.errors[0].msg);
+    }else{
+      let results = usersORM.create({
+        firstName : req.body['firstName'],
+        lastName  : req.body['lastName'],
+        email     : req.body['email'],
+        password  : req.body['password'],
+        birthdate : req.body['birthdate']
+      });
+
+      if (results) {
+        res.redirect('/home');
+      } else {
+        res.send("Add user failed!! we are got some troubles with the server you might try some later.");
+      }
+    }
   }
 
+  /* This method works in order to find a singular user depending on its email */
   static async getUserByEmail(req, res){
-    /* This method works in order to find a singular user depending on its email */
   }
 
   static async updateUser(req, res){
