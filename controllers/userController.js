@@ -52,11 +52,17 @@ class userController {
 
   /* This method works in order to add a new user with the above validations */
   static async addUser(req, res){
+
+    /* The pourpose of this variable is to know if the contente of the new user's input is correct */
     let err = validationResult(req);
 
+    /* checke the variable */
     if (!err.isEmpty()) {
+      /* In case it is invalid */
       res.send(errors.errors[0].msg);
+
     }else{
+      /* In case it is valid the user will be added to the data base */
       let results = usersORM.create({
         firstName : req.body['firstName'],
         lastName  : req.body['lastName'],
@@ -65,9 +71,16 @@ class userController {
         birthdate : req.body['birthdate']
       });
 
+      /* Here we can know if the user was successfully added to the data base */
       if (results) {
+        /* 
+        In case it is correct the server will direct you to the home page 
+        where is the main storage of your new user 
+        */
         res.redirect('/home');
       } else {
+
+        /* Other way the server will display an error meassage */
         res.send("Add user failed!! we are got some troubles with the server you might try some later.");
       }
     }
@@ -77,24 +90,24 @@ class userController {
   static async getUserByEmail(req, res){
   }
 
+  /* Here is the dessicion of the update methods to be usede */
   static async updateUser(req, res){
-    /* Here is the dessicion of the update methods to be usede */
   }
 
+  /* This method is suposed to update the password depending on the user's email */
   static async updateUserPassword(req, res){
-    /* This method is suposed to update the password depending on the user's email */
   }
 
+  /* This method is suposed to update the first name depending on the user's email */
   static async updateUserFirstName(req, res){
-    /* This method is suposed to update the first name depending on the user's email */
   }
 
+  /* This method is suposed to update the second name depending on the user's email */
   static async updateUserSecondName(req, res){
-    /* This method is suposed to update the second name depending on the user's email */
   }
 
+  /* This mehtod is suposed to update the birthdate depending on the user's email */
   static async updateUserBirthdate(req, res){
-    /* This mehtod is suposed to update the birthdate depending on the user's email */
   }
 }
 
