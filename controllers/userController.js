@@ -4,16 +4,10 @@ const { check, validationResult } = require("express-validator");
 /* These are the validation rules which are going to be executed at the time of adding a new user. */
 const validationRules = [
   /* Checks for the first name to be valid format */
-  check("firstName")
+  check("userName")
     .notEmpty()
     .isAlphanumeric()
     .withMessage("User name is required"),
-
-  /* Checks for the second name to be valid format */
-  check("lastName")
-    .notEmpty()
-    .isAlphanumeric()
-    .withMessage("Second Name is Required"),
 
   /* Checks for the password to be valid format */
   check("password")
@@ -21,13 +15,6 @@ const validationRules = [
     .isStrongPassword()
     .isAlphanumeric()
     .withMessage("Password is required"),
-
-  /* Checks for the first name to be valid format */
-  check("birthdate")
-    .isDate()
-    .toDate(true)
-    .notEmpty()
-    .withMessage("Your birthdate is required"),
 
   /* Checks for the first name to be valid format */
   check("email")
@@ -64,11 +51,9 @@ class userController {
     }else{
       /* In case it is valid the user will be added to the data base */
       let results = usersORM.create({
-        firstName : req.body['firstName'],
-        lastName  : req.body['lastName'],
+        username : req.body['username'],
         email     : req.body['email'],
         password  : req.body['password'],
-        birthdate : req.body['birthdate']
       });
 
       /* Here we can know if the user was successfully added to the data base */
