@@ -29,10 +29,6 @@ const User = sequelize.define("users", {
     password:{
         type: DataTypes.STRING
     },
-    recoverycode:{
-        type: DataTypes.INTEGER
-
-    },
     avatar:{
         type: DataTypes.STRING
 

@@ -98,5 +98,5 @@ class userController {
 
 module.exports = {
   validationRules,
-  UsersController,
+  userController
 }
