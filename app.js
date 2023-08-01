@@ -1,3 +1,6 @@
+// var env = require('./config')();
+// process.env.PORT =  env.port;
+
 const session = require("express-session");
 const passport = require('passport');
 const hbs = require('hbs');
