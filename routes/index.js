@@ -12,8 +12,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/login', destroyUsers,{});
+// router.get('/login', destroyUsers,{});
 
-router.get('/home', userController.);
+// router.get();
 
 module.exports = router;
