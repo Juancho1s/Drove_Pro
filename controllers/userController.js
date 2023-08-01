@@ -34,10 +34,6 @@ const validationRules = [
     .notEmpty(),
 ];
 
-<<<<<<< HEAD
-class UsersController {
-  
-=======
 /* This calss will contain all the refered method to the users, these methods are called controllers */
 class userController {
 
@@ -98,14 +94,9 @@ class userController {
   /* This mehtod is suposed to update the birthdate depending on the user's email */
   static async updateUserBirthdate(req, res){
   }
->>>>>>> Juan'sBranch
 }
 
 module.exports = {
   validationRules,
-<<<<<<< HEAD
   UsersController,
-=======
-  userController,
->>>>>>> Juan'sBranch
 }
