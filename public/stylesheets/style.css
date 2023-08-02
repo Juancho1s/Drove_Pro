@@ -534,6 +534,7 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+<<<<<<< HEAD
 .container {
   width: 100%;
 }
@@ -701,12 +702,21 @@ video {
 
 .items-center {
   align-items: center;
+=======
+.h-screen {
+  height: 100vh;
+}
+
+.w-screen {
+  width: 100vw;
+>>>>>>> 415c44bc97af4b0c40d6a320f0e59be57b481b35
 }
 
 .justify-center {
   justify-content: center;
 }
 
+<<<<<<< HEAD
 .gap-8 {
   gap: 2rem;
 }
@@ -802,12 +812,25 @@ video {
 
 .text-left {
   text-align: left;
+=======
+.fill-gray-700 {
+  fill: #374151;
+}
+
+.fill-black {
+  fill: #000;
+}
+
+.p-12 {
+  padding: 3rem;
+>>>>>>> 415c44bc97af4b0c40d6a320f0e59be57b481b35
 }
 
 .text-center {
   text-align: center;
 }
 
+<<<<<<< HEAD
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1043,4 +1066,30 @@ video {
   .lg\:text-left {
     text-align: left;
   }
+=======
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.font-black {
+  font-weight: 900;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.text-slate-600 {
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity));
+>>>>>>> 415c44bc97af4b0c40d6a320f0e59be57b481b35
 }
