@@ -533,3 +533,19 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+
+.justify-center {
+  justify-content: center;
+}
+
+.fill-black {
+  fill: #000;
+}
+
+.fill-gray-700 {
+  fill: #374151;
+}
+
+.text-center {
+  text-align: center;
+}
