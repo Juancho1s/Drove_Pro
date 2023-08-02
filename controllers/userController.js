@@ -50,7 +50,7 @@ class userController {
 
     }else{
       /* In case it is valid the user will be added to the data base */
-      let results = usersORM.create({
+      let results = await usersORM.create({
         username : req.body['username'],
         email     : req.body['email'],
         password  : req.body['password'],
@@ -73,6 +73,13 @@ class userController {
 
   /* This method works in order to find a singular user depending on its email */
   static async getUserByEmail(req, res){
+    // let 
+
+    // let user = await usersORM.findOne(
+    //   {
+    //     where : {email  : email}
+    //   }
+    // );
   }
 
   /* Here is the dessicion of the update methods to be usede */
