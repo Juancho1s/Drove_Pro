@@ -3,7 +3,7 @@ const {Sequelize, DataTypes} = require('sequelize');
 const sequelize = new Sequelize({
     host: "localhost",
     username: "root",
-    password: "@zM4dA4T97mq",
+    password: "123456789",
     database: "drove",
     dialect:"mysql",
     define: {
@@ -16,15 +16,12 @@ const User = sequelize.define("users", {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
-
     },
     username:{
         type: DataTypes.STRING
-
     },
     email:{
         type: DataTypes.STRING
-
     },
     password:{
         type: DataTypes.STRING
