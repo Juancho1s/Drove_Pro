@@ -1,8 +1,15 @@
 class sessionStarting {
-  static async destroySession(req, res) {
+  static async clearSigup(req, res) {
     //req.userSession.destroy();
-    res.render("log_in",{
-      title: "DrovePro-Login"
+    res.render("register", {
+      title: "DrovePro-Login",
+    });
+  }
+
+  static async clearLogin(req, res) {
+    //req.userSession.destroy();
+    res.render("log_in", {
+      title: "DrovePro-Login",
     });
   }
 
