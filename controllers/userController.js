@@ -68,13 +68,7 @@ class userController {
   static async updateUserPassword(req, res) {}
 
   /* This method is suposed to update the first name depending on the user's email */
-  static async updateUserFirstName(req, res) {}
-
-  /* This method is suposed to update the second name depending on the user's email */
-  static async updateUserSecondName(req, res) {}
-
-  /* This mehtod is suposed to update the birthdate depending on the user's email */
-  static async updateUserBirthdate(req, res) {}
+  static async updateUserName(req, res) {}
 }
 
 module.exports = {
