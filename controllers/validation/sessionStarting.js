@@ -1,16 +1,24 @@
 class sessionStarting {
-  static destroySession(req, res) {
-    req.session.destroy();
-    res.render("log_in",{
-      title: "DrovePro-Login"
+
+  static async clearSigup(req, res) {
+    //req.userSession.destroy();
+    res.render("register", {
+      title: "DrovePro-Login",
     });
   }
 
-  static checkUserSession(req, res) {
-    if (req.session.userData) {
+  static async clearLogin(req, res) {
+    //req.userSession.destroy();
+    res.render("log_in", {
+      title: "DrovePro-Login",
+    });
+  }
+
+  static async checkUserSession(req, res) {
+    if (req.userSession.userData) {
       next();
     } else {
-      res.redirect("/home");
+      res.redirect("/login");
     }
   }
 }

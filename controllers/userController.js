@@ -72,6 +72,5 @@ class userController {
 }
 
 module.exports = {
-  validationRules,
   userController,
 };

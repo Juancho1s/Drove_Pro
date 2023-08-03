@@ -1,3 +1,4 @@
+const usersORM = require("../../models/userORM");
 const { check, validationResult } = require("express-validator");
 
 /* These are the validation rules which are going to be executed at the time of adding a new user. */

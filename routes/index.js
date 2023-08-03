@@ -12,9 +12,9 @@ const sessionStarting = require("../controllers/validation/sessionStarting");
 /* This get would start the server */
 router.get("/", sessionStarting.checkUserSession);
 /* This get would destroy the user account and allow the user to start anotherone */
-router.get("/login", sessionStarting.destroySession);
+router.get("/login", sessionStarting.clearLogin);
 /* This get would destroy the user account and allow the user to create anotherone */
-router.get("/signup", sessionStarting.destroySession);
+router.get("/signup", sessionStarting.clearSigup);
 /* This get would redirect you to the home page where the user can select any folder or file */
 router.get("/home/:id");
 
