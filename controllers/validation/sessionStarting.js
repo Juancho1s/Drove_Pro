@@ -1,7 +1,7 @@
 class sessionStarting {
   static destroySession(req, res) {
     req.session.destroy();
-    res.render("login",{
+    res.render("log_in",{
       title: "DrovePro-Login"
     });
   }
