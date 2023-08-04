@@ -2,11 +2,10 @@ var express = require("express");
 var router = express.Router();
 
 const {
-  UsersController,
   validationRules,
   userController,
 } = require("../controllers/userController");
-const sessionStarting = require("../controllers/validation/sessionStarting");
+const sessionStarting = require("../controllers/services/sessionStarting");
 
 /* GET */
 /* This get would start the server */
@@ -20,7 +19,7 @@ router.get("/home/:id");
 
 /* POST */
 /* This post give me the input of the user to start its session */
-router.post("/login", userController.getUserByEmail);
+router.post("/login", userController.getUserByEON);
 /* This post gives us a new user with all the information needed for him in order to create */
 router.post("/signup", userController.addUser);
 
