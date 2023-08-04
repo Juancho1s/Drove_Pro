@@ -1,12 +1,12 @@
 const usersORM = require("../models/userORM");
-const loginValidation = require("../controllers/validation/loginValidation");
-const signupValidation = require("../controllers/validation/signupValidation");
+const loginValidation = require("./services/loginValidation");
+const signupValidation = require("./services/signupValidation");
+const { Op } = require("sequelize");
 
 /* This calss will contain all the refered method to the users, these methods are called controllers */
 class userController {
   /* This method works in order to add a new user with the above validations */
   static async addUser(req, res) {
-
     /* The pourpose of this variable is to know if the contente of the new user's input is correct */
     let err = signupValidation.validationResult(req);
 
@@ -39,16 +39,23 @@ class userController {
   }
 
   /* This method works in order to find a singular user depending on its email */
-  static async getUserByEmail(req, res) {
+  static async getUserByEON(req, res) {
     let err = loginValidation.validationResult(req);
     if (err) {
       res.redirect("/login");
     }
 
     let username_email = req.body.username_email;
+    let password = req.body.password;
 
     let user = await usersORM.findOne({
-      where: { email: username_email },
+      where: {
+        [Op.or]: [
+          { username: username_email }, 
+          { email: username_email }
+        ],
+        password: password,
+      },
     });
 
     if (user) {
