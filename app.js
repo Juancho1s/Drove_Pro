@@ -1,7 +1,6 @@
 // var env = require('./config')();
 // process.env.PORT =  env.port;
 
-const session = require("express-session");
 const passport = require('passport');
 const hbs = require('hbs');
 
@@ -13,14 +12,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var userSession = require('express-session');
+var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
-app.use(userSession({
+app.use(session({
   secret:"Drove Profesional",
   resave: true,
   saveUninitialized: true,
