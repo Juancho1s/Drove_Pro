@@ -45,10 +45,10 @@ class userController {
       res.redirect("/login");
     }
 
-    let email = req.session.email;//next
+    let username_email = req.body.username_email;
 
     let user = await usersORM.findOne({
-      where: { email: email },
+      where: { email: username_email },
     });
 
     if (user) {
