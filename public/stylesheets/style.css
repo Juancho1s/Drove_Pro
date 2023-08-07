@@ -813,9 +813,15 @@ video {
   padding-bottom: 2.5rem;
 }
 
+<<<<<<< HEAD
 .py-12 {
   padding-top: 3rem;
   padding-bottom: 3rem;
+=======
+.py-14 {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+>>>>>>> 3dea887505ef259cf503fd4fc99de80c93201b53
 }
 
 .py-2 {
