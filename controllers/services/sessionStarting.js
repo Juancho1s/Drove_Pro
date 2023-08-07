@@ -3,14 +3,14 @@ class sessionStarting {
   static async clearSigup(req, res) {
     req.session.destroy();
     res.render("register", {
-      title: "DrovePro-Login",
+      title: "SignUp",
     });
   }
 
   static async clearLogin(req, res) {
     req.session.destroy();
     res.render("log_in", {
-      title: "DrovePro-Login",
+      title: "Login",
     });
   }
 
