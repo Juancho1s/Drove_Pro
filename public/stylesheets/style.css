@@ -853,6 +853,11 @@ video {
   padding-bottom: 2.5rem;
 }
 
+.py-14 {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -868,6 +873,7 @@ video {
   padding-bottom: 0.75rem;
 }
 
+<<<<<<< Updated upstream
 .py-14 {
   padding-top: 3.5rem;
   padding-bottom: 3.5rem;
@@ -892,6 +898,8 @@ video {
   padding-bottom: 3.5rem;
 }
 
+=======
+>>>>>>> Stashed changes
 .pb-2 {
   padding-bottom: 0.5rem;
 }
