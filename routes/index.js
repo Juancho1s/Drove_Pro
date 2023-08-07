@@ -20,7 +20,7 @@ router.get("/home/:id");
 /* POST */
 /* This post give me the input of the user to start its session */
 router.post("/login", userController.getUserByEON);
-/* This post gives us a new user with all the information needed for him in order to create */
+/* This post gives us a new user with all the information needed for him in order to be created */
 router.post("/signup", userController.addUser);
 
 module.exports = router;
