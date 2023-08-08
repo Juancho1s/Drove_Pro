@@ -7,6 +7,7 @@
     "start_watch": "npx tailwindcss -i ./public/stylesheets/input.css -o ./public/stylesheets/style.css --watch"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.0.18",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cookie-parser": "~1.4.4",
