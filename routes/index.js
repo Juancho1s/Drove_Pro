@@ -15,7 +15,11 @@ router.get("/login", sessionStarting.clearLogin);
 /* This get would destroy the user account and allow the user to create anotherone */
 router.get("/signup", sessionStarting.clearSigup);
 /* This get would redirect you to the home page where the user can select any folder or file */
-router.get("/home/:id");
+router.get("/home/:id", (req, res) => {
+  res.render("home", {
+    title: "Home",
+  });
+});
 
 /* POST */
 /* This post give me the input of the user to start its session */
