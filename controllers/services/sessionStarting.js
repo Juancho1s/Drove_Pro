@@ -8,9 +8,10 @@ class sessionStarting {
 
   static async clearLogin(req, res) {
     req.session.destroy();
+
     res.render("log_in", {
       title: "Login",
-      user: req.session.userData,
+      stay: false
     });
   }
 
