@@ -21,7 +21,6 @@ class userController {
         email: req.body["email"],
         password: req.body["password"],
       });
-
       /* Here we can know if the user was successfully added to the data base */
       if (results) {
         /* 
@@ -30,10 +29,8 @@ class userController {
         */
         res.redirect("/home");
       } else {
-        /* Other way the server will display an error meassage */
-        res.send(
-          "Add user failed!! we are got some troubles with the server you might try some later."
-        );
+        /* If there is a wrong field it will return you to the loging page */
+        res.redirect("/login");;
       }
     }
   }
@@ -43,7 +40,7 @@ class userController {
     /* This variable will check if the fields introduced are correct */
     let err = loginValidation.validationResult(req);
     /* In case they are not the server will return you to the login page */
-    if (err) {
+    if (!err.isEmpty()) {
       res.redirect("/login");
     }
 
@@ -70,11 +67,13 @@ class userController {
     to the home page which will contain all the user folders and files 
     */
     if (user) {
-      
-      res.render("home", {
-        title: "DrovePro-Home",
-        userID: user.id,
-      });
+      req.session.userData = {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        password: user.password,
+      }
+      res.redirect(`/home/${user.id}`);
     } else {
       /* In case that the user is an invalid one, the server will direct you to the login page */
       res.redirect("/login");

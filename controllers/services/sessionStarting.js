@@ -1,16 +1,18 @@
 class sessionStarting {
-
   static async clearSigup(req, res) {
     req.session.destroy();
     res.render("register", {
       title: "SignUp",
+      stay: false
     });
   }
 
   static async clearLogin(req, res) {
     req.session.destroy();
+
     res.render("log_in", {
       title: "Login",
+      stay: false
     });
   }
 
@@ -24,3 +26,5 @@ class sessionStarting {
 }
 
 module.exports = sessionStarting;
+
+

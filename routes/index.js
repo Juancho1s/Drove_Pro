@@ -18,13 +18,21 @@ router.get("/signup", sessionStarting.clearSigup);
 router.get("/home/:id", (req, res) => {
   res.render("home", {
     title: "Home",
+    stay: true,
+    folder: {
+      link: "This is files will have its contents written into a JSON string. \n",
+      link2: 42,
+      c: { nested: "You can nest directories to create a tree structure. \n" },
+      d: { example: "somethimes it's convenient to enable some raw JSON" },
+      empty: {},
+    }
   });
 });
 
 /* POST */
 /* This post give me the input of the user to start its session */
 router.post("/login", userController.getUserByEON);
-/* This post gives us a new user with all the information needed for him in order to create */
+/* This post gives us a new user with all the information needed for him in order to be created */
 router.post("/signup", userController.addUser);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,19 +10,30 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
     <title>{{title}}</title>
 </head>
-<body class="font-mono font-bold divide-black  min-h-screen">
-    {{> header }}
+
+<body class="font-mono font-bold divide-black relative w-max overflow-x-hidden min-h-screen">
+
+   
+        {{#if stay}}
+        {{> header }}
+        {{/if}}
+   
+
 
     <div>
         {{{body}}}
     </div>
 
     
+        {{#if stay}}
+        {{> footer }}
+        {{/if}}
+   
 
-    {{> footer }}
+
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 </body>
+
 </html>
-    
