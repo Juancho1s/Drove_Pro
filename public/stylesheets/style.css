@@ -937,6 +937,10 @@ input[type="range"]::-ms-fill-lower {
   margin-bottom: 2rem;
 }
 
+.ml-10 {
+  margin-left: 2.5rem;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -997,12 +1001,8 @@ input[type="range"]::-ms-fill-lower {
   margin-top: 2rem;
 }
 
-.ml-5 {
-  margin-left: 1.25rem;
-}
-
-.ml-10 {
-  margin-left: 2.5rem;
+.ml-14 {
+  margin-left: 3.5rem;
 }
 
 .block {
@@ -1182,6 +1182,12 @@ input[type="range"]::-ms-fill-lower {
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
+.space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2rem * var(--tw-space-x-reverse));
+  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1289,6 +1295,11 @@ input[type="range"]::-ms-fill-lower {
   padding-right: 2.5rem;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .px-20 {
   padding-left: 5rem;
   padding-right: 5rem;
@@ -1344,11 +1355,6 @@ input[type="range"]::-ms-fill-lower {
   padding-bottom: 2.25rem;
 }
 
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -1361,12 +1367,12 @@ input[type="range"]::-ms-fill-lower {
   padding-left: 1rem;
 }
 
-.pt-8 {
-  padding-top: 2rem;
-}
-
 .pr-2 {
   padding-right: 0.5rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .text-left {

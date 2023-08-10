@@ -18,6 +18,7 @@ router.get("/signup", sessionStarting.clearSigup);
 router.get("/home/:id", (req, res) => {
   res.render("home", {
     title: "Home",
+    stay: true,
     folder: {
       link: "This is files will have its contents written into a JSON string. \n",
       link2: 42,

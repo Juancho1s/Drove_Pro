@@ -3,6 +3,7 @@ class sessionStarting {
     req.session.destroy();
     res.render("register", {
       title: "SignUp",
+      stay: false
     });
   }
 
