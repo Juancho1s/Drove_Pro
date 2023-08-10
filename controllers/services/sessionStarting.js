@@ -1,5 +1,4 @@
 class sessionStarting {
-
   static async clearSigup(req, res) {
     req.session.destroy();
     res.render("register", {
@@ -11,6 +10,7 @@ class sessionStarting {
     req.session.destroy();
     res.render("log_in", {
       title: "Login",
+      user: req.session.userData,
     });
   }
 
@@ -24,3 +24,5 @@ class sessionStarting {
 }
 
 module.exports = sessionStarting;
+
+

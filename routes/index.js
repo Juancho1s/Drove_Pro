@@ -18,6 +18,13 @@ router.get("/signup", sessionStarting.clearSigup);
 router.get("/home/:id", (req, res) => {
   res.render("home", {
     title: "Home",
+    folder: {
+      link: "This is files will have its contents written into a JSON string. \n",
+      link2: 42,
+      c: { nested: "You can nest directories to create a tree structure. \n" },
+      d: { example: "somethimes it's convenient to enable some raw JSON" },
+      empty: {},
+    }
   });
 });
 
