@@ -13,7 +13,7 @@ class userController {
     /* checke the variable */
     if (!err.isEmpty()) {
       /* In case it is invalid */
-      res.send(errors.errors[0].msg);
+      res.redirect("/login");
     } else {
       /* In case it is valid the user will be added to the data base */
       let results = await usersORM.create({
