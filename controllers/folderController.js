@@ -1,8 +1,8 @@
-const fileFolderORM = require("../models/folderORM");
+const folderORM = require("../models/folderORM");
 const { Op } = require("sequelize");
 
 
-class folderORM {
+class folderController {
   static async getFolder(req, res){}
 
   static async moveFolderTo(req, res) {}
@@ -13,3 +13,5 @@ class folderORM {
 
   static async updateFolder(req, res) {}
 }
+
+module.exports = folderController;

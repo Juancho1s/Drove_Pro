@@ -25,9 +25,17 @@ class userController {
       if (results) {
         /* 
         In case it is correct the server will direct you to the home page 
-        where is the main storage of your new user 
+        where is the main storage of your new user. Also there will be
+        a little variable which works as a storache for the user while 
+        it is active
         */
-        res.redirect("/home");
+        req.session.userData = {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          password: user.password,
+        }
+        res.redirect(`/home/${results.id}`);
       } else {
         /* If there is a wrong field it will return you to the loging page */
         res.redirect("/login");;
