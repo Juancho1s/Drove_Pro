@@ -7,6 +7,7 @@ const {
 } = require("../controllers/userController");
 const sessionStarting = require("../controllers/services/sessionStarting");
 
+
 /* GET */
 /* This get would start the server */
 router.get("/", sessionStarting.checkUserSession);
@@ -20,12 +21,15 @@ router.get("/home/:id", sessionStarting.checkUserSession, (req, res) => {
     title: "Home",
     stay: true,
     folder: {
-      "link": "This is files will have its contents written into a JSON string. \n",
-      "link2": 42,
-      "c": { "nested": "You can nest directories to create a tree structure. \n" },
-      "d": { "example": "somethimes it's convenient to enable some raw JSON" },
-      "empty": {},
-    }
+      Folders: [
+        { Name: "Project Management" },
+        { Name: "Contracts" },
+        {
+          Name: "Engineering",
+          Folders: [{ Name: "Assets" }, { Name: "Requirements" }],
+        },
+      ],
+    },
   });
 });
 
