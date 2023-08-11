@@ -38,7 +38,7 @@ class userController {
         res.redirect(`/home/${results.id}`);
       } else {
         /* If there is a wrong field it will return you to the loging page */
-        res.redirect("/login");;
+        res.redirect("/login");
       }
     }
   }
