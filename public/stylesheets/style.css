@@ -898,6 +898,10 @@ input[type="range"]::-ms-fill-lower {
   position: relative;
 }
 
+.right-full {
+  right: 100%;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1021,6 +1025,10 @@ input[type="range"]::-ms-fill-lower {
   display: block;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .inline {
   display: inline;
 }
@@ -1071,6 +1079,14 @@ input[type="range"]::-ms-fill-lower {
 
 .h-auto {
   height: auto;
+}
+
+.h-14 {
+  height: 3.5rem;
+}
+
+.h-20 {
+  height: 5rem;
 }
 
 .min-h-screen {
@@ -1138,6 +1154,18 @@ input[type="range"]::-ms-fill-lower {
   width: 5rem;
 }
 
+.w-80 {
+  width: 20rem;
+}
+
+.w-60 {
+  width: 15rem;
+}
+
+.w-56 {
+  width: 14rem;
+}
+
 .flex-auto {
   flex: 1 1 auto;
 }
@@ -1198,6 +1226,30 @@ input[type="range"]::-ms-fill-lower {
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
+.space-y-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-12 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(3rem * var(--tw-space-y-reverse));
+}
+
+.space-x-12 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(3rem * var(--tw-space-x-reverse));
+  margin-left: calc(3rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1212,6 +1264,10 @@ input[type="range"]::-ms-fill-lower {
 .divide-gray-100 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-divide-opacity));
+}
+
+.justify-self-center {
+  justify-self: center;
 }
 
 .overflow-x-hidden {
@@ -1395,6 +1451,10 @@ input[type="range"]::-ms-fill-lower {
 
 .align-middle {
   vertical-align: middle;
+}
+
+.align-text-bottom {
+  vertical-align: text-bottom;
 }
 
 .font-mono {
