@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?
+    family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styleLoading.css">
+
+<img src="/img/DrovePro.png" alt="" class="Logo">
+
+<div class="container">
+    <div class="circular-progress">
+        <div class="value-container">0%</div>
+
+    </div>
+</div>
+
+
+<script>
+    let progressBar = document.querySelector(".circular-progress");
+    let valueContainer = document.querySelector(".value-container");
+
+    let progressValue = 0;
+    let progressEndValue = 100;
+    let speed = 50;
+
+    let progress = setInterval(() => {
+        progressValue++;
+        valueContainer.textContent = `${progressValue}%`;
+        progressBar.style.background = `conic-gradeint(
+                #4d5bf9 ${progressValue * 3.6}deg,
+                #cadcff ${progressValue * 3.6}deg
+            )`;
+        console.log(progressValue);
+        if (progressValue == progressEndValue) {
+            clearInterval(progress);
+        }
+    }, speed);
+
+</script>

@@ -1,4 +1,4 @@
-<div class="w-screen bg-slate-300">
+<div class="w-screen bg-slate-300 ">
 
     <div>
     <a
@@ -15,6 +15,7 @@
     </div>
 
     <form class="space-y-4 mt-8" method="post" action="/login">
+
         <div>
             <label for="username" class="block text-sm font-semibold text-black font-sans">Username or Email</label>
             <input type="text" id="username_email" name="username_email" class="h-9 w-full rounded-md border border-gray-500" />
@@ -36,41 +37,30 @@
         </div>
 
         <!-- Agrega los botones de inicio de sesión con Google, Facebook y Apple aquí -->
-        <div class="flex justify-center">
-            <div>
-                <a href="https://myaccount.google.com/">
-                
-                    <button
-                        class="w-30 bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2">
-                        
+        <div class="flex justify-center space-x-8">
+            
+
+                <a class="w-30 bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2"
+                    href="https://myaccount.google.com/">
                         <img src="../img/icongoogle.svg" type="" style="display: inline; width:26px;">
                         Google
-                    </button>
                 </a>
 
-                <a
+                <a class="w-30 bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2"
                     href="https://facebook.com">
-                    <button
-                        class="w-30 bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2">
                         <img src="../img/iconfacebook.svg" type="" style="display: inline; width:26px;">
                         Facebook
-                    </button>
                 </a>
-            </div>
-
-
         </div>
+
+
         <div class="flex justify-center">
-            <a
+            <a class="w-30 bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2"
                 href="https://appleid.apple.com/auth/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=code&scope=name%20email">
-                <button
-                    class="w-30 bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2">
                     <img src="../img/iconapple.svg" type="" style="display: inline; width:26px;">
                     Apple
-                </button>
             </a>
         </div>
-
 
     </form>
 </div>
