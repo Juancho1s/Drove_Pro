@@ -1,17 +1,22 @@
+const { Op } = require("sequelize");
 const folderORM = require("../models/folderORM");
 const fileORM = require("../models/fileORM");
-const { Op } = require("sequelize");
 
 class folderController {
   static async getFolder(req, res) {}
 
-  static async moveFolderTo(req, res) {}
+  static async createFolder(req, res) {
+    const newFolderData = req.body.folder;
+    const folderName = newFolderData.originalname;
 
-  static async createFolder(req, res) {}
-
+    let results = await folderORM.create();
+  }
+  
   static async downloadFolder(req, res) {}
-
+  
   static async updateFolder(req, res) {}
+  
+  static async moveFolderTo(req, res) {}
 }
 
 class fileController {
@@ -28,7 +33,7 @@ class fileController {
 
 class multimediaController{
   //get all files and folders in a specific path 
-  static async getUserFilesAndFolders(req,res){}
+  static async getAllfolderAndFilesOf(req,res){}
 }
 
 module.exports = folderController;

@@ -7,7 +7,6 @@ const {
 } = require("../controllers/userController");
 const sessionStarting = require("../controllers/services/sessionStarting");
 
-
 /* GET */
 /* This get would start the server */
 router.get("/", sessionStarting.checkUserSession);
@@ -20,15 +19,19 @@ router.get("/home/:id", sessionStarting.checkUserSession, (req, res) => {
   res.render("home", {
     title: "Home",
     stay: true,
-    folder: {
-      Folders: [
-        { Name: "Project Management" },
-        { Name: "Contracts" },
-        {
-          Name: "Engineering",
-          Folders: [{ Name: "Assets" }, { Name: "Requirements" }],
-        },
-      ],
+    multimedia: {
+      "Folder1": {
+        "Name": "Programs",
+        "Folders": [
+          { "Name": "Project Management" },
+          { "Name": "Contracts" },
+          {
+            "Name": "Engineering",
+            "Folders": [{ "Name": "Assets" }, { "Name": "Requirements" }],
+          },
+        ],
+      },
+      "file": { "Name": "Quiksort" },
     },
   });
 });
