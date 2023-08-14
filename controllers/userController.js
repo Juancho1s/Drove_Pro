@@ -13,7 +13,7 @@ class userController {
     /* checke the variable */
     if (!err.isEmpty()) {
       /* In case it is invalid */
-      res.send(errors.errors[0].msg);
+      res.redirect("/login");
     } else {
       /* In case it is valid the user will be added to the data base */
       let results = await usersORM.create({
@@ -25,12 +25,20 @@ class userController {
       if (results) {
         /* 
         In case it is correct the server will direct you to the home page 
-        where is the main storage of your new user 
+        where is the main storage of your new user. Also there will be
+        a little variable which works as a storache for the user while 
+        it is active
         */
-        res.redirect("/home");
+        req.session.userData = {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          password: user.password,
+        }
+        res.redirect(`/home/${results.id}`);
       } else {
         /* If there is a wrong field it will return you to the loging page */
-        res.redirect("/login");;
+        res.redirect("/login");
       }
     }
   }

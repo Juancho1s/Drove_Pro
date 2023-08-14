@@ -15,17 +15,24 @@ router.get("/login", sessionStarting.clearLogin);
 /* This get would destroy the user account and allow the user to create anotherone */
 router.get("/signup", sessionStarting.clearSigup);
 /* This get would redirect you to the home page where the user can select any folder or file */
-router.get("/home/:id", (req, res) => {
+router.get("/home/:id", sessionStarting.checkUserSession, (req, res) => {
   res.render("home", {
     title: "Home",
     stay: true,
-    folder: {
-      "link": "This is files will have its contents written into a JSON string. \n",
-      "link2": 42,
-      "c": { "nested": "You can nest directories to create a tree structure. \n" },
-      "d": { "example": "somethimes it's convenient to enable some raw JSON" },
-      "empty": {},
-    }
+    multimedia: {
+      "Folder1": {
+        "Name": "Programs",
+        "Folders": [
+          { "Name": "Project Management" },
+          { "Name": "Contracts" },
+          {
+            "Name": "Engineering",
+            "Folders": [{ "Name": "Assets" }, { "Name": "Requirements" }],
+          },
+        ],
+      },
+      "file": { "Name": "Quiksort" },
+    },
   });
 });
 
