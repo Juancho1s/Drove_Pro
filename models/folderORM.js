@@ -30,6 +30,12 @@ const Folder = sequelize.define("folders", {
   path: {
     type: DataTypes.STRING,
   },
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
+    primaryKey: true,
+  }
 });
 
 module.exports = Folder;
