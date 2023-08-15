@@ -40,6 +40,27 @@ router.get("/home/:id", sessionStarting.checkUserSession, (req, res) => {
   });
 });
 
+router.get("/folder/:path", (req, res) =>{
+  res.render("folder",{
+    title: "Caca en uña",
+    stay: true,
+    multimedia: {
+      "Folder1": {
+        "Name": "Programs",
+        "Folders": [
+          { "Name": "Project Management" },
+          { "Name": "Contracts" },
+          {
+            "Name": "Engineering",
+            "Folders": [{ "Name": "Assets" }, { "Name": "Requirements" }],
+          },
+        ],
+      },
+      "file": { "Name": "Quiksort" },
+    },
+  });
+});
+
 
 /* POST */
 

@@ -44,9 +44,7 @@ class userController {
 
   /* This method works in order to find a singular user depending on its email */
   static async getUserByEON(req, res) {
-    /* This variable will check if the fields introduced are correct */
     let err = loginValidation.validationResult(req);
-    /* In case they are not the server will return you to the login page */
     if (!err.isEmpty()) {
       res.redirect("/login");
     }
