@@ -1,88 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/stylesheets/style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../public/stylesheets/style.css">
+  <title>DELETE</title>
 </head>
-<body>
-    <footer class="relative bg-gray-300 pt-8 pb-6">
-  <div class="container mx-auto px-4">
-    
-    <div class="flex flex-wrap text-left lg:text-left">
-      <div class="w-full lg:w-6/12 px-4" >
-        <img class="h-10 w-36" src="../public/img/DrovePro.png" alt="drove">
-        <h4 class="my-5 text-3xl fonat-semibold text-blueGray-700">The best manager in the cloud!</h4>
-        <h5 class="text-base font-normal mt-0 mb-2 text-blueGray-600">The best file manager in the cloud at your disposal.</h5>
-        </div>
 
-      
+<body class="font-sans bg-gray-600 flex flex-col items-center justify-center space-y-5">
 
-      <div class="w-full lg:w-6/12 px-4">
-        <div class="flex flex-wrap items-top mb-6">
-          <div class="w-full lg:w-4/12 px-4 ml-auto">
-            <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2">GitHub Links</span>
-            <ul class="list-unstyled">
-              <li>
-                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.creative-tim.com/presentation?ref=njs-profile">Github - Juan</a>
-              </li>
-              <li>
-                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://github.com/TAlexisT">Github - Alexis</a>
-              </li>
-              <li>
-                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.creative-tim.com/bootstrap-themes/free?ref=njs-profile">Github - Alejandro</a>
-              </li>
-            </ul>
-          </div>
-          <div class="w-full lg:w-4/12 px-4">
-            <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Explore</span>
-            <ul class="list-unstyled">
-              <li>
-                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.creative-tim.com/bootstrap-themes/free?ref=njs-profile">Home</a>
-              </li>
-              <li>
-                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.creative-tim.com/bootstrap-themes/free?ref=njs-profile">About us</a>
-              </li>
-              <li>
-                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.creative-tim.com/bootstrap-themes/free?ref=njs-profile">Careers</a>
-              </li>
-              <li>
-                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.creative-tim.com/bootstrap-themes/free?ref=njs-profile">Capabilities</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="w-full lg:w-4/12 px-4">
-            <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Visit</span>
-            <ul class="list-unstyled">
-              <li>
-                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.facebook.com/">Facebook</a>
-              </li>
-              <li>
-                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.instagram.com/">Instagram</a>
-              </li>
-              <li>
-                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://twitter.com/">Twitter</a>
-              </li>
-              <li>
-                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://www.tiktok.com/">Tiktok</a>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
+  <div class="bg-white w-2/6 h-52 rounded-lg">
+    <div class="text-center space-y-6">
+      <p class="font-semibold text-2xl pt-5">RENAME</p>
+      <input id="newFileName" type="text" class="border rounded-xl w-80" placeholder="New Name">
     </div>
-    <hr class="my-6 border-blueGray-300">
-    <div class="flex flex-wrap items-center md:justify-between justify-center">
-      <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-        <div class="text-sm text-blueGray-500 font-semibold py-1">
-          Copyright © <span id="get-current-year">2023 Team Dinamita</span>
-        </div>
-      </div>
+    <div class="space-x-2 flex place-content-end font-sans font-medium mt-10 mr-6">
+      <button type="submit"
+        class="bg-gray-300 px-4 py-1 border border-gray-400 hover:bg-gray-400 rounded-md">Accept</button>
+      <button type="submit"
+        class="bg-gray-300 px-4 py-1 border border-gray-400 hover:bg-gray-400 rounded-md">Cancel</button>
     </div>
   </div>
-</footer>
+
+
+
+  <div class="bg-white w-2/6 h-52 rounded-lg">
+    <div class="text-center space-y-6">
+      <p class="font-semibold text-2xl pt-5">DELETE</p>
+      <p class="font-medium">Are you sure you want to delete this folder?</p>
+    </div>
+    <div class="space-x-2 flex place-content-end font-sans font-medium mt-14 mr-6">
+      <button type="submit"
+        class="bg-gray-300 px-4 py-1 border border-gray-400 hover:bg-gray-400 rounded-md">Delete</button>
+      <button type="submit"
+        class="bg-gray-300 px-4 py-1 border border-gray-400 hover:bg-gray-400 rounded-md">Cancel</button>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="bg-white w-2/6 h-72 rounded-lg">
+    <div class="text-center justify-center space-y-7">
+      <p class="font-semibold text-2xl pt-5">SHARE WITH...</p>
+
+      <input id="sharewith" type="text" class="border rounded-xl w-80" placeholder="Share with...">
+
+      <button id="dropdownHoverButton3" data-dropdown-toggle="dropdownHover3"
+        class="text-black ml-16 w-80 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sans font-medium rounded-md text-sm px-5 py-2.5 flex items-center justify-between"
+        type="button">Access<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+          fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="m1 1 4 4 4-4" />
+        </svg></button>
+      <!-- Dropdown menu -->
+      <div id="dropdownHover3"
+        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton3">
+          <li>
+            <a href="#"
+              class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Owner</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Viewer</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Commentator</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="space-x-2 flex place-content-end font-sans font-medium mt-11 mr-6">
+      <button type="submit"
+        class="bg-gray-300 px-4 py-1 border border-gray-400 hover:bg-gray-400 rounded-md">Accept</button>
+      <button type="submit"
+        class="bg-gray-300 px-4 py-1 border border-gray-400 hover:bg-gray-400 rounded-md">Cancel</button>
+    </div>
+  </div>
+
 </body>
+
 </html>
