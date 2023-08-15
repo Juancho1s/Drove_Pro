@@ -1,0 +1,182 @@
+<div class="w-screen bg-white border-t  border-gray-300">
+
+  <div class="bg-white flex py-9 ">
+
+    {{!-- Aqui es la parte superior de la pagina, New, Type File y Last Modification --}}
+
+    <button id="dropdownDefaultButton5" data-dropdown-toggle="dropdown5"
+      class="text-black w-48 ml-7 bg-white rounded-md border border-gray-400 hover:bg-gray-300 font-sans focus:ring-4 focus:outline-none font-medium text-sm px-5 py-2.5 text-center items-center"
+      type="button">+ NEW </button>
+    <!-- Dropdown menu -->
+
+    <div id="dropdown5" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton5">
+        <li>
+          <a href="#"
+            class="block px-4 py-2 font-medium font-sans text-black hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">File</a>
+        </li>
+        <li>
+          <a href="#"
+            class="block px-4 py-2 font-medium font-sans text-black hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Folder</a>
+        </li>
+      </ul>
+    </div>
+
+
+
+
+    <button id="dropdownHoverButton6" data-dropdown-toggle="dropdownHover6" data-dropdown-trigger="hover"
+      class="text-black ml-24 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sans font-medium rounded-md text-sm px-5 py-2.5 text-center inline-flex items-center"
+      type="button">File Type<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+        fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+      </svg></button>
+    <!-- Dropdown menu -->
+    <div id="dropdownHover6"
+      class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton6">
+        <li>
+          <a href="#"
+            class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF</a>
+        </li>
+        <li>
+          <a href="#"
+            class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Folders</a>
+        </li>
+        <li>
+          <a href="#"
+            class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">File(zip)</a>
+        </li>
+        <li>
+          <a href="#"
+            class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">File(txt)</a>
+        </li>
+        <li>
+          <a href="#"
+            class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">File
+            Programming</a>
+        </li>
+      </ul>
+    </div>
+
+
+
+    <button id="dropdownHoverButton7" data-dropdown-toggle="dropdownHover7" data-dropdown-trigger="hover"
+      class="text-black ml-6 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sans font-medium rounded-md text-sm px-5 py-2.5 text-center inline-flex items-center"
+      type="button">Last Modification<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+      </svg></button>
+    <!-- Dropdown menu -->
+    <div id="dropdownHover7"
+      class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton7">
+        <li>
+          <a href="#"
+            class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">1
+            day</a>
+        </li>
+        <li>
+          <a href="#"
+            class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">1
+            week</a>
+        </li>
+        <li>
+          <a href="#"
+            class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">1
+            month</a>
+        </li>
+        <li>
+          <a href="#"
+            class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">1
+            year</a>
+        </li>
+        <li>
+          <a href="#"
+            class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All</a>
+        </li>
+      </ul>
+    </div>
+
+
+
+  </div>
+
+  {{!-- Aqui termina la parte superior de la pagina, New, Type File y Last Modification --}}
+
+  {{!-- Aqui inicia la parte intermedia de la pagina, la barra lateral y las paginas a mostrar --}}
+
+
+
+  <div class="flex">
+
+    {{!-- Aqui se encuentra la barra lateral --}}
+
+    <div class="mb-8">
+
+      {{> left_bar}}
+
+    </div>
+
+    {{!-- Aqui se encuentra donde se van a mostrar las carpetas --}}
+
+    <div class="ml-24 mt-9">
+
+      {{!-- Aqui es cada una de las carpetas --}}
+
+
+      <div class="space-x-5 flex">
+
+        {{#each multimedia}}
+
+
+        <div id="contextMenuTrigger" class="fol">
+
+          <a id=""
+            class="bg-gray-300 flex align-middle justify-between items-center h-14 w-56 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2"
+            href="">
+            {{this.Name}}
+            <div>
+              <img src="/img/folder.png" type="" style="display: inline; width:26px;">
+            </div>
+
+          </a>
+
+        </div>
+
+        {{!-- Aqui se encuentra el menu desplegable al dar clic derecho en cada una de las carpetas --}}
+
+        <div id="customContextMenu"
+          class="hidden absolute bg-white text-sm border rounded-lg font-sans font-medium border-gray-300 shadow-md py-2 w-36">
+          <div class="flex items-center align-bottom px-4 py-2 hover:bg-gray-100">
+            <img src="/img/renom.png" alt="" class="w-4 h-4 mr-2  ">
+            <a href="#" class=" hover:bg-gray-100">Rename</a>
+          </div>
+
+          <div class="flex items-center align-bottom px-4 py-2 hover:bg-gray-100">
+            <img src="/img/dele.png" alt="" class="w-4 h-4 mr-2  ">
+            <a href="#" class=" hover:bg-gray-100">Delete</a>
+          </div>
+
+          <div class="flex items-center align-bottom px-4 py-2 hover:bg-gray-100">
+            <img src="/img/send.png" alt="" class="w-4 h-4 mr-2  ">
+            <a href="#" class=" hover:bg-gray-100">Share</a>
+          </div>
+
+        </div>
+
+        {{/each}}
+
+      </div>
+
+    </div>
+
+  </div>
+
+  {{!-- Aqui termina la parte intermedia de la pagina, la barra lateral y las paginas a mostrar --}}
+
+</div>
+
+<script src="/Interactions/RightClick.js">
+
+</script>
