@@ -1,4 +1,5 @@
 const usersORM = require("../models/userORM");
+const multimediaController = require("./multimediaController");
 const loginValidation = require("./services/loginValidation");
 const signupValidation = require("./services/signupValidation");
 const { Op } = require("sequelize");
@@ -6,7 +7,7 @@ const { Op } = require("sequelize");
 /* This calss will contain all the refered method to the users, these methods are called controllers */
 class userController {
   /* This method works in order to add a new user with the above validations */
-  static async addUser(req, res) {
+  static async addUser(req, res, next) {
     /* The pourpose of this variable is to know if the contente of the new user's input is correct */
     let err = signupValidation.validationResult(req);
 
@@ -16,28 +17,26 @@ class userController {
       res.redirect("/login");
     } else {
       /* In case it is valid the user will be added to the data base */
-      let results = await usersORM.create({
+      let user = await usersORM.create({
         username: req.body["username"],
         email: req.body["email"],
         password: req.body["password"],
       });
-      /* Here we can know if the user was successfully added to the data base */
-      if (results) {
-        /* 
-        In case it is correct the server will direct you to the home page 
-        where is the main storage of your new user. Also there will be
-        a little variable which works as a storache for the user while 
-        it is active
-        */
+      if (user) {
+        /* This statement will save all the user data(it is totaly secure in HTTPS) */
         req.session.userData = {
           id: user.id,
           username: user.username,
           email: user.email,
           password: user.password,
+          id: user.id,
+          location: "root",
         }
-        res.redirect(`/home/${results.id}`);
+
+        /* This function create the new user's root */
+        multimediaController.newUserRoot(req, res, next);
+        res.redirect(`/home/${user.id}`);
       } else {
-        /* If there is a wrong field it will return you to the loging page */
         res.redirect("/login");
       }
     }
@@ -45,9 +44,7 @@ class userController {
 
   /* This method works in order to find a singular user depending on its email */
   static async getUserByEON(req, res) {
-    /* This variable will check if the fields introduced are correct */
     let err = loginValidation.validationResult(req);
-    /* In case they are not the server will return you to the login page */
     if (!err.isEmpty()) {
       res.redirect("/login");
     }
@@ -80,6 +77,7 @@ class userController {
         username: user.username,
         email: user.email,
         password: user.password,
+        location: "root",
       }
       res.redirect(`/home/${user.id}`);
     } else {
@@ -87,6 +85,9 @@ class userController {
       res.redirect("/login");
     }
   }
+
+  /* This method will get all the files that are shared with the current user */
+  static async getFilesShared(req, res){}
 
   /* Here is the dessicion of the update methods to be usede */
   static async updateUser(req, res) {}
