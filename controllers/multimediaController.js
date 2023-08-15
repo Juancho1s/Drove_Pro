@@ -18,9 +18,27 @@ class folderController {
   static async createFolder(req, res) {
     const newFolderData = req.body.folder;
     const folderName = newFolderData.originalname;
-    let id_user = req.session.userData;
+    const locationPath = req.params.path;
+    let id_user = req.session.userData.id;
 
-    methods.processFolder(newFolderData);
+    try {
+      const items = await fs.readdir(newFolderData);
+      let folders = [];
+      let files = [];
+
+      for (const item of items) {
+        const itemPath = path.join(newFolderData, item);
+        const stat = await fs.stat(itemPath);
+
+        if (stat.isDirectory()) {
+          folders.push({ Name: stat.originalname });
+        } else if (stat.isFile()) {
+          files.push({ Name: stat.originalname });
+        }
+      }
+    } catch (error) {
+      console.error("Error while processing folder:", error);
+    }
 
     // let results = await folderORM.create({
     //   id_user: id_user,
@@ -48,7 +66,7 @@ class folderController {
   static async readFolderFiles(req, res) {}
 
   /* This method will creat a root for every new user */
-  static async newUserRoot(req, res, next){
+  static async newUserRoot(req, res, next) {
     let userId = req.session.userData.id;
 
     const resutls = folderORM.create({
@@ -59,10 +77,10 @@ class folderController {
       folderBeforePath: "/",
       path: `/root${userId}`,
     });
-    
+
     if (resutls) {
       next();
-    }else{
+    } else {
       res.redirect("/login");
     }
   }
