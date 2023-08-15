@@ -40,7 +40,7 @@ router.get("/home/:id", sessionStarting.checkUserSession, (req, res) => {
   });
 });
 
-router.get("/folder/:path", (req, res) =>{
+router.get("/home/1/folder/Programs", (req, res) =>{
   res.render("folder",{
     title: "Caca en uña",
     stay: true,
