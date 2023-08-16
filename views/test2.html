@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/stylesheets/style.css">
     <title>Document</title>
 </head>
+
 <body>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?
-    family=Poppins:wght@700&display=swap" rel="stylesheet">
+   <!-- logo -->
 
-    <link rel="stylesheet" href="style.css">
+    <nav class="flex space-x-8 justify-between w-screen bg-white py-3 h-auto">
+        <img class="h-12 w-44" src="../public/img/DrovePro flat - copia.png" alt="">
 
-    <img src="../public/img/DrovePro.png" alt="" class="Logo">
+        <!-- search bar -->
+ 
+        <form action="Search">
+            <input type="text" name="Search" placeholder="Search" aria-label="Search-talk" class="px-3 py-2 font-semibold ml-14 rounded-full placeholder-gray-500 text-black border-none ring-2 ring-gray-300 
+            focus:ring-gray-500 focus:ring-2 mt-1 font-sans" style="width: 500px; margin-right: 200px">
+        </form>
 
-    <div class="container">
-         <div class="circular-progress">
-            <div class="value-container">0%</div>
+        <!-- icons -->
+        <div class="mt-4 pr-7 flex space-x-5 relative">
+            <button><img class="h-6 w-6" src="../public/img/question.png" alt=""></button>
 
-         </div>
-    </div>
-
-    
-    <script>
-        let progressBar = document.querySelector(".circular-progress");
-        let valueContainer = document.querySelector(".value-container");
-
-        let progressValue = 0; 
-        let progressEndValue = 100;
-        let speed = 50; 
+        <button id="dropdownDefaultButton9" data-dropdown-toggle="dropdown9"
+            class="text-black  border-gray-400 hover:bg-gray-300 rounded-full font-sans  font-medium text-sm  text-center items-center"
+            type="button"><img class="h-6 w-6" src="../public/img/settings.png" alt=""> </button>
+        <!-- Dropdown menu -->
         
-        let progress = setInterval(() => {
-            progressValue++;
-            valueContainer.textContent = `${progressValue}%`;
-            progressBar.style.background = `conic-gradeint(
-                #4d5bf9 ${progressValue * 3.6}deg,
-                #cadcff ${progressValue * 3.6}deg
-            )`;
-            console.log(progressValue);
-            if(progressValue == progressEndValue){
-                clearInterval(progress);
-            }
-        }, speed);
+        <div id="dropdown9" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton9">
+                <li>
+                    <a href="#"
+                        class="block px-4 py-2 font-medium font-sans text-black hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Setings</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="block px-4 py-2 font-medium font-sans text-black hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Help</a>
+                </li>
+            </ul>
+                    
+        </div>
 
-    </script>
+            <button><img src="../public/img/user.png" alt="" class="h-6 w-6"></button>
+        </div>
+    </nav>
+
 
 </body>
+
+        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+
 </html>
