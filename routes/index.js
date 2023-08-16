@@ -61,6 +61,20 @@ router.get("/home/1/folder/Programs", (req, res) =>{
   });
 });
 
+router.get("/newfile", (req, res) => {
+  res.render("newfile", {
+    title: "New File",
+    stay: false
+  });
+});
+
+router.get("/newfolder", (req, res) => {
+  res.render("newfolder", {
+    title: "New Folder",
+    stay: false,
+  });
+});
+
 
 /* POST */
 
