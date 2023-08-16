@@ -11,27 +11,31 @@ const sequelize = new Sequelize({
   },
 });
 
-const User = sequelize.define("users", {
+const Folder = sequelize.define("folders", {
+  id_user: {
+    type: DataTypes.INTEGER,
+  },
+  name: {
+    type: DataTypes.STRING,
+  },
+  filesIn: {
+    type: DataTypes.JSON,
+  },
+  foldersIn: {
+    type: DataTypes.JSON,
+  },
+  folderBeforePath: {
+    type: DataTypes.STRING,
+  },
+  path: {
+    type: DataTypes.STRING,
+  },
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
+    allowNull: false,
     primaryKey: true,
-  },
-  username: {
-    type: DataTypes.STRING,
-  },
-  email: {
-    type: DataTypes.STRING,
-  },
-  password: {
-    type: DataTypes.STRING,
-  },
-  avatar: {
-    type: DataTypes.STRING,
-  },
-  filesSharedWith: {
-    type: DataTypes.JSON,
-  },
+  }
 });
 
-module.exports = User;
+module.exports = Folder;
