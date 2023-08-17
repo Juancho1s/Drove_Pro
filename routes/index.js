@@ -21,7 +21,7 @@ router.get("/login", sessionStarting.clearLogin);
 router.get("/signup", sessionStarting.clearSigup);
 
 /* This get would redirect you to the home page where the user can select any folder or file */
-router.get("/home/:id", sessionStarting.checkUserSession, );
+router.get("/home/:id", sessionStarting.checkUserSession);
 
 router.get("/home/:id/folder/:path", sessionStarting.checkUserSession, (req, res) => {
 
@@ -71,14 +71,14 @@ router.get("/home/:id/folder/:path", sessionStarting.checkUserSession, (req, res
   });
 });
 
-router.get("/newfile", (req, res) => {
+router.post("/newfile", (req, res) => {
   res.render("newfile", {
     title: "New File",
     stay: false
   });
 });
 
-router.get("/newfolder", (req, res) => {
+router.post("/newfolder", (req, res) => {
   res.render("newfolder", {
     title: "New Folder",
     stay: false,
