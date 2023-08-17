@@ -95,16 +95,10 @@ class fileController {
 class multimediaController {
   /* Get all files and folders in a specific path  */
   static async getAllfolderAndFilesOf(req, res) {
-    let location = (path) => {
-      req.session.userData.location.each((locations) => {
-        path += locations;
-      });
-      return path;
-    };
 
-    let cryp1 = location;
-    let cryp2 = location + "/movies";
-    let cryp3 = location + "/Quicksort";
+    let cryp1 = methods.location(req);
+    let cryp2 = methods.location(req) + "/movies";
+    let cryp3 = methods.location(req) + "/Quicksort";
     const encryptionKey = crypto.randomBytes(32);
     const iv = crypto.randomBytes(16);
 
@@ -153,15 +147,13 @@ class multimediaController {
 
 class methods {
   /* This method will return the current location */
-  static async location(req) {
-    let location = (path) => {
-      req.session.userData.location.each((locations) => {
-        path += locations;
-      });
-      return path;
+  static location(req) {
+    let pahtCreation = "";
+    let pathParts = req.session.userData.location;
+    for (let i = 0; i < pathParts.length; i++) {
+      pahtCreation += pathParts[i];
     }
-    console.log(location);
-    return location; 
+    return pahtCreation;
   }
 
   /* This method will process all the folder structure then upload it to the database */
@@ -199,4 +191,8 @@ class methods {
   }
 }
 
-module.exports = { folderController, multimediaController, fileController};
+module.exports = {
+  folderController,
+  fileController,
+  multimediaController,
+};
