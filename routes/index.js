@@ -7,7 +7,11 @@ const {
   userController,
 } = require("../controllers/userController");
 const sessionStarting = require("../controllers/services/sessionStarting");
-const multimediaController = require("../controllers/multimediaController");
+const {
+  folderController,
+  multimediaController,
+  fileController,
+} = require("../controllers/multimediaController");
 
 /* GET */
 
@@ -95,6 +99,6 @@ router.post("/login", userController.getUserByEON);
 /* This post gives us a new user with all the information needed for him in order to be created */
 router.post("/signup", userController.addUser);
 
-router.post("/uploadFolder/:path", multimediaController.createFolder);
+router.post("/uploadFolder/:path", folderController.createFolder);
 
 module.exports = router;

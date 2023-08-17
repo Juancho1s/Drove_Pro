@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const folderORM = require("../models/folderORM");
 const fileORM = require("../models/fileORM");
+const crypto = require("crypto");
 
 class folderController {
   /* This method will get a specific folder which belong to a specific location */
@@ -101,22 +102,22 @@ class multimediaController {
       return path;
     };
 
-    // let cryp1 = location;
-    // let cryp2 = location + "/movies";
-    // let cryp3 = location + "/Quicksort";
-    // const encryptionKey = crypto.randomBytes(32);
-    // const iv = crypto.randomBytes(16);
+    let cryp1 = await methods.location(req);
+    let cryp2 = await methods.location(req) + "/movies";
+    let cryp3 = await methods.location(req) + "/Quicksort";
+    const encryptionKey = crypto.randomBytes(32);
+    const iv = crypto.randomBytes(16);
 
-    // const cipher1 = crypto.createCipheriv("aes-256-cbc", encryptionKey, iv);
-    // const cipher2 = crypto.createCipheriv("aes-256-cbc", encryptionKey, iv);
-    // const cipher3 = crypto.createCipheriv("aes-256-cbc", encryptionKey, iv);
+    const cipher1 = crypto.createCipheriv("aes-256-cbc", encryptionKey, iv);
+    const cipher2 = crypto.createCipheriv("aes-256-cbc", encryptionKey, iv);
+    const cipher3 = crypto.createCipheriv("aes-256-cbc", encryptionKey, iv);
 
-    // let encryptedHex1 = cipher1.update(cryp1, "utf-8", "hex");
-    // let encryptedHex2 = cipher2.update(cryp2, "utf-8", "hex");
-    // let encryptedHex3 = cipher3.update(cryp3, "utf-8", "hex");
-    // encryptedHex1 += cipher1.final("hex");
-    // encryptedHex2 += cipher2.final("hex");
-    // encryptedHex3 += cipher3.final("hex");
+    let encryptedHex1 = cipher1.update(cryp1, "utf-8", "hex");
+    let encryptedHex2 = cipher2.update(cryp2, "utf-8", "hex");
+    let encryptedHex3 = cipher3.update(cryp3, "utf-8", "hex");
+    encryptedHex1 += cipher1.final("hex");
+    encryptedHex2 += cipher2.final("hex");
+    encryptedHex3 += cipher3.final("hex");
 
     res.render("home", {
       title: "Home",
@@ -153,12 +154,14 @@ class multimediaController {
 class methods {
   /* This method will return the current location */
   static async location(req) {
-    return (location = (path) => {
+    let location = (path) => {
       req.session.userData.location.each((locations) => {
         path += locations;
       });
       return path;
-    });
+    }
+    console.log(location);
+    return location; 
   }
 
   /* This method will process all the folder structure then upload it to the database */
@@ -196,4 +199,4 @@ class methods {
   }
 }
 
-module.exports = folderController;
+module.exports = { folderController, multimediaController, fileController};
