@@ -6,8 +6,12 @@ const {
   validationRules,
   userController,
 } = require("../controllers/userController");
+const {
+  folderController,
+  fileController,
+  multimediaController,
+} = require("../controllers/multimediaController");
 const sessionStarting = require("../controllers/services/sessionStarting");
-const multimediaController = require("../controllers/multimediaController");
 
 /* GET */
 
