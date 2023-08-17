@@ -102,9 +102,9 @@ class multimediaController {
       return path;
     };
 
-    let cryp1 = await methods.location(req);
-    let cryp2 = await methods.location(req) + "/movies";
-    let cryp3 = await methods.location(req) + "/Quicksort";
+    let cryp1 = location;
+    let cryp2 = location + "/movies";
+    let cryp3 = location + "/Quicksort";
     const encryptionKey = crypto.randomBytes(32);
     const iv = crypto.randomBytes(16);
 
