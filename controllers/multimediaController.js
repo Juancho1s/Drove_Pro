@@ -102,9 +102,9 @@ class multimediaController {
       return path;
     };
 
-    let cryp1 = location;
-    let cryp2 = location + "/movies";
-    let cryp3 = location + "/Quicksort";
+    let cryp1 = await methods.location(req);
+    let cryp2 = await methods.location(req) + "/movies";
+    let cryp3 = await methods.location(req) + "/Quicksort";
     const encryptionKey = crypto.randomBytes(32);
     const iv = crypto.randomBytes(16);
 
@@ -154,12 +154,14 @@ class multimediaController {
 class methods {
   /* This method will return the current location */
   static async location(req) {
-    return (location = (path) => {
+    let location = (path) => {
       req.session.userData.location.each((locations) => {
         path += locations;
       });
       return path;
-    });
+    }
+    console.log(location);
+    return location; 
   }
 
   /* This method will process all the folder structure then upload it to the database */
