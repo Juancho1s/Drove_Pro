@@ -2,17 +2,13 @@
 
   <div class="bg-white flex py-9 ">
 
-
-
-
-
-
-
+    {{!-- Aqui es la parte superior de la pagina, New, Type File y Last Modification --}}
 
     <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-      class="text-black w-48 ml-7 bg-white rounded-md border border-gray-400 hover:bg-gray-300 font-sans focus:ring-4 focus:outline-none font-medium text-sm px-5 py-2.5 text-center items-center"
+      class="text-black w-48 ml-7 bg-white rounded-md border border-gray-400 hover:bg-gray-300 font-sans focus:outline-none font-medium text-sm px-5 py-2.5 text-center items-center"
       type="button">+ NEW </button>
     <!-- Dropdown menu -->
+
     <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
       <form action="" method="post">
         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
@@ -29,12 +25,8 @@
 
 
 
-
-
-
-
     <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
-      class="text-black ml-24 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sans font-medium rounded-md text-sm px-5 py-2.5 text-center inline-flex items-center"
+      class="text-black ml-24 bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-blue-300 font-sans font-medium rounded-md text-sm px-5 py-2.5 text-center inline-flex items-center"
       type="button">File Type<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
         fill="none" viewBox="0 0 10 6">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -114,9 +106,15 @@
 
   </div>
 
+  {{!-- Aqui termina la parte superior de la pagina, New, Type File y Last Modification --}}
+
+  {{!-- Aqui inicia la parte intermedia de la pagina, la barra lateral y las paginas a mostrar --}}
+
 
 
   <div class="flex">
+
+    {{!-- Aqui se encuentra la barra lateral --}}
 
     <div class="mb-8">
 
@@ -124,9 +122,68 @@
 
     </div>
 
+    {{!-- Aqui se encuentra donde se van a mostrar las carpetas --}}
+
     <div class="ml-24 mt-9">
 
+      {{!-- Aqui van a estar los recientes --}}
+
+      <p class="text-base font-sans font-medium pb-5">Recent</p>
+
       <div class="space-x-5 flex">
+
+        {{#each multimedia}}
+
+
+        <div id="contextMenuTrigger" class="fol">
+
+          <a id=""
+            class="bg-gray-300 flex align-middle justify-between items-center h-14 w-56 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none"
+            href="">
+            {{this.Name}}
+            <div>
+              <img class="rounded-lg" src="/img/imgpdf.png" type="" style="display: inline; width: 35px;;">
+            </div>
+
+          </a>
+
+        </div>
+
+        {{!-- Aqui se encuentra el menu desplegable al dar clic derecho en cada una de las carpetas --}}
+
+        <div id="customContextMenu"
+          class="hidden absolute bg-white text-sm border rounded-lg font-sans font-medium border-gray-300 shadow-md py-2 w-36">
+          <div class="flex items-center align-bottom px-4 py-2 hover:bg-gray-100">
+            <img src="/img/renom.png" alt="" class="w-4 h-4 mr-2  ">
+            <a href="#" class=" hover:bg-gray-100">Rename</a>
+          </div>
+
+          <div class="flex items-center align-bottom px-4 py-2 hover:bg-gray-100">
+            <img src="/img/dele.png" alt="" class="w-4 h-4 mr-2  ">
+            <a href="#" class=" hover:bg-gray-100">Delete</a>
+          </div>
+
+          <div class="flex items-center align-bottom px-4 py-2 hover:bg-gray-100">
+            <img src="/img/send.png" alt="" class="w-4 h-4 mr-2  ">
+            <a href="#" class=" hover:bg-gray-100">Share</a>
+          </div>
+
+        </div>
+
+        {{/each}}
+
+      </div>
+
+      {{!-- Aqui terminan los recientes --}}
+
+      {{!-- Aqui empieza cada una de las carpetas --}}
+
+      <p class="text-base font-sans font-medium py-5">Folders</p>
+
+
+      <div class="space-x-5 flex">
+
+
 
         {{#each multimedia}}
 
@@ -144,6 +201,8 @@
           </a>
 
         </div>
+
+        {{!-- Aqui se encuentra el menu desplegable al dar clic derecho en cada una de las carpetas --}}
 
         <div id="customContextMenu"
           class="hidden absolute bg-white text-sm border rounded-lg font-sans font-medium border-gray-300 shadow-md py-2 w-36">
@@ -171,6 +230,8 @@
     </div>
 
   </div>
+
+  {{!-- Aqui termina la parte intermedia de la pagina, la barra lateral y las paginas a mostrar --}}
 
 </div>
 

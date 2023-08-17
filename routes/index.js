@@ -71,6 +71,21 @@ router.get("/home/:id/folder/:path", sessionStarting.checkUserSession, (req, res
   });
 });
 
+router.get("/newfile", (req, res) => {
+  res.render("newfile", {
+    title: "New File",
+    stay: false
+  });
+});
+
+router.get("/newfolder", (req, res) => {
+  res.render("newfolder", {
+    title: "New Folder",
+    stay: false,
+  });
+});
+
+
 /* POST */
 
 /* This post give me the input of the user to start its session */
