@@ -11,34 +11,19 @@ class folderController {
   /* This method will get all the folders of any specific location */
   static async getAllFolders(req, res) {}
 
+  /* This method can update a folder to the database */
+  static async uploadFolder(req, res) {}
+
   /* 
     This method will create a new folder into the database and also
     it will insert the files which are inside this folder
   */
   static async createFolder(req, res) {
-    const newFolderData = req.body.folder;
-    const folderName = newFolderData.originalname;
+    const newFolder = req.body.folder;
     const locationPath = req.params.path;
     let id_user = req.session.userData.id;
 
-    try {
-      const items = await fs.readdir(newFolderData);
-      let folders = [];
-      let files = [];
-
-      for (const item of items) {
-        const itemPath = path.join(newFolderData, item);
-        const stat = await fs.stat(itemPath);
-
-        if (stat.isDirectory()) {
-          folders.push({ Name: stat.originalname });
-        } else if (stat.isFile()) {
-          files.push({ Name: stat.originalname });
-        }
-      }
-    } catch (error) {
-      console.error("Error while processing folder:", error);
-    }
+    methods.processFolder(newFolderData);
 
     // let results = await folderORM.create({
     //   id_user: id_user,
@@ -108,36 +93,103 @@ class fileController {
 
 class multimediaController {
   /* Get all files and folders in a specific path  */
-  static async getAllfolderAndFilesOf(req, res) {}
+  static async getAllfolderAndFilesOf(req, res) {
+    let location = (path) => {
+      req.session.userData.location.each((locations) => {
+        path += locations;
+      });
+      return path;
+    };
+
+    // let cryp1 = location;
+    // let cryp2 = location + "/movies";
+    // let cryp3 = location + "/Quicksort";
+    // const encryptionKey = crypto.randomBytes(32);
+    // const iv = crypto.randomBytes(16);
+
+    // const cipher1 = crypto.createCipheriv("aes-256-cbc", encryptionKey, iv);
+    // const cipher2 = crypto.createCipheriv("aes-256-cbc", encryptionKey, iv);
+    // const cipher3 = crypto.createCipheriv("aes-256-cbc", encryptionKey, iv);
+
+    // let encryptedHex1 = cipher1.update(cryp1, "utf-8", "hex");
+    // let encryptedHex2 = cipher2.update(cryp2, "utf-8", "hex");
+    // let encryptedHex3 = cipher3.update(cryp3, "utf-8", "hex");
+    // encryptedHex1 += cipher1.final("hex");
+    // encryptedHex2 += cipher2.final("hex");
+    // encryptedHex3 += cipher3.final("hex");
+
+    res.render("home", {
+      title: "Home",
+      stay: true,
+      multimedia: {
+        Folder1: {
+          id_user: req.params.id,
+          name: "movies",
+          folderBeforePath: encryptedHex1,
+          path: encryptedHex2,
+        },
+        file: {
+          name: "Quicksort",
+          type: ".pdf",
+          creationDate: "02/10/2023",
+          size: "1000",
+          usersAndPermission: [
+            {
+              name: "Juancho",
+              permission: "read",
+            },
+            {
+              name: "John4",
+              permission: "write",
+            },
+          ],
+          path: encryptedHex3,
+        },
+      },
+    });
+  }
 }
 
 class methods {
-  static async processFolder(newFolderData) {
-    try {
-      const items = await fs.readdir(newFolderData);
-      let folders = [];
-      let files = [];
+  /* This method will return the current location */
+  static async location(req) {
+    return (location = (path) => {
+      req.session.userData.location.each((locations) => {
+        path += locations;
+      });
+      return path;
+    });
+  }
 
+  /* This method will process all the folder structure then upload it to the database */
+  static async processFolder(newFolder, req) {
+    try {
+      req.session.userData.location.push(`/${newFolder.originalname}`);
+      const items = await fs.readdir(newFolder);
+      let foldersIn = [];
+      let filesIn = [];
       for (const item of items) {
-        const itemPath = path.join(newFolderData, item);
+        const itemPath = path.join(newFolder, item);
         const stat = await fs.stat(itemPath);
+        let location = await methods.location(req);
+        let path = `${location}/${itemPath.originalname}`;
 
         if (stat.isDirectory()) {
-          folders.push({ Name: stat.originalname });
+          let folderPaht = 
+          foldersIn.push({
+            name: itemPath.originalname,
+            path: path,
+          });
+          await processFolder(itemPath); // Recursively process subfolders
+          req.session.userData.location.pop();
         } else if (stat.isFile()) {
-          files.push({ Name: stat.originalname });
+          filesIn.push({
+            name: itemPath.originalname,
+            path: path,
+          });
         }
       }
 
-      // for (const item of items) {
-      //   const itemPath = path.join(newFolderData, item);
-      //   const stat = await fs.stat(itemPath);
-
-      //   if (stat.isDirectory()) {
-      //   } else if (stat.isFile()) {
-      //     const fileContent = await fs.readFile(itemPath, "utf8");
-      //   }
-      // }
     } catch (error) {
       console.error("Error while processing folder:", error);
     }
