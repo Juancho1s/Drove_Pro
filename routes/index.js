@@ -12,11 +12,6 @@ const {
   multimediaController,
 } = require("../controllers/multimediaController");
 const sessionStarting = require("../controllers/services/sessionStarting");
-const {
-  folderController,
-  multimediaController,
-  fileController,
-} = require("../controllers/multimediaController");
 
 /* GET */
 
