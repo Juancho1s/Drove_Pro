@@ -1,16 +1,20 @@
 var express = require("express");
 var router = express.Router();
 
-const crypto = require("crypto");
+const crypto = require("crypto-js");
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
 const {
-  validationRules,
   userController,
-} = require("../controllers/userController");
+} = require("../controllers/usersController");
 const {
   folderController,
   fileController,
   multimediaController,
 } = require("../controllers/multimediaController");
+const methods = require("../controllers/services/methods");
 const sessionStarting = require("../controllers/services/sessionStarting");
 
 /* GET */
@@ -35,63 +39,47 @@ router.get(
   "/home/:id/folder/:path",
   sessionStarting.checkUserSession,
   (req, res) => {
-    let location = req.session.userData.location;
+    let location = methods.location(req);
+    let encryptionKey = req.session.userData.email;
 
     let path = req.params.path;
 
-    const decipher = crypto.createDecipheriv("aes-256-cbc", encryptionKey, iv);
+    let cryp1 = location + "/movies";
+    let cryp1ed = crypto.AES.encrypt(cryp1, encryptionKey, {mode: crypto.mode.CBC}).toString(crypto.enc.Base64);
 
-    let cryp1 = location;
-    let cryp2 = location + "/movies";
-    let cryp3 = location + "/Mergesort";
-
-    const cipher = crypto.createCipheriv("aes-256-cbc", encryptionKey, iv);
-
-    let encryptedHex1 = cipher.update(cryp1, "utf-8", "hex");
-    let encryptedHex2 = cipher.update(cryp2, "utf-8", "hex");
-    let encryptedHex3 = cipher.update(cryp3, "utf-8", "hex");
-    encryptedHex1 += cipher.final("hex");
-    encryptedHex2 += cipher.final("hex");
-    encryptedHex3 += cipher.final("hex");
-
-    res.render("folder", {
-      title: "Caca en uña",
-      stay: true,
-      multimedia: {
-        Folder1: {
-          id_user: 1,
-          name: "movies",
-          folderBeforePath: encryptedHex1,
-          path: encryptedHex2,
+    try{
+      res.render("folder", {
+        title: "Caca en uña",
+        stay: true,
+        multimedia: {
+          Folder1: {
+            id_user: 1,
+            name: "movies",
+            folderBeforePath: "encryptedUrlSafe",
+            path: cryp1ed,
+          },
+          file: {
+            name: "Mergesort",
+            type: ".jpg",
+            creationDate: "02/10/2023",
+            size: "1000",
+            usersAndPermission: {},
+            path: "encryptedHex3",
+          },
         },
-        file: {
-          name: "Mergesort",
-          type: ".jpg",
-          creationDate: "02/10/2023",
-          size: "1000",
-          usersAndPermission: {},
-          path: encryptedHex3,
-        },
-      },
-    });
+      });
+    } catch (error) {
+      console.error("Error while processing folder:", error);
+    }
+
   }
 );
 
-router.post("/newfile", (req, res) => {
-  res.render("newfile", {
-    title: "New File",
-    stay: false,
-  });
-});
-
-router.post("/newfolder", (req, res) => {
-  res.render("newfolder", {
-    title: "New Folder",
-    stay: false,
-  });
-});
-
 /* POST */
+
+router.post("/newfile");
+
+router.post("/newfolder", upload.any("folder"), folderController.createFolder);
 
 /* This post give me the input of the user to start its session */
 router.post("/login", userController.getUserByEON);

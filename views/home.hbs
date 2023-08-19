@@ -10,16 +10,20 @@
     <!-- Dropdown menu -->
 
     <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-      <form action="" method="post">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-          <a href="#"
-            class="block px-4 py-2 font-medium font-sans text-black hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">File</a>
-          </li>
-          <li>
-            <input type="file" webkitdirectory>
-          </li>
-        </ul>
-      </form>
+      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        <li>
+          <form action="/newfile" method="post" enctype="multipart/form-data">
+            <input type="file" name="folder" id="folder" directory webkitdirectory>
+            <input type="submit">
+          </form>
+        </li>
+        <li>
+          <form action="/newfolder" method="post" enctype="multipart/form-data">
+            <input type="file" name="folder" id="folder" directory webkitdirectory>
+            <input type="submit">
+          </form>
+        </li>
+      </ul>
     </div>
 
 
@@ -234,6 +238,8 @@
   {{!-- Aqui termina la parte intermedia de la pagina, la barra lateral y las paginas a mostrar --}}
 
 </div>
+
+<div></div>
 
 <script src="/Interactions/RightClick.js">
 
