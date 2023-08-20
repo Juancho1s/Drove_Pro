@@ -1,3 +1,5 @@
+const crypto = require("crypto-js");
+
 class methods {
   /* This method will return the current location */
   static location(req) {
@@ -7,6 +9,15 @@ class methods {
       pahtCreation += pathParts[i];
     }
     return pahtCreation;
+  }
+
+  static pathEncryption(req){
+    const encryptionKey = req.session.userData.email;
+    const iv = req.session.userData.password;
+    let location = methods.location(req);
+    let cryps = crypto.AES.encrypt(location, encryptionKey, { iv }).toString().replace(/\+/g, '-').replace(/\//g, '_');
+
+    return cryps;
   }
 
   /* This method will process all the folder structure then upload it to the database */

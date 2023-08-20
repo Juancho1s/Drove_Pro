@@ -31,7 +31,7 @@ class userController {
           email: user.email,
           password: user.password,
           id: user.id,
-          location: ["root"],
+          location: ["testing/testing_folder"],
         };
 
         /* This function create the new user's root */
@@ -76,7 +76,7 @@ class userController {
         email: user.email,
         password: user.password,
         id: user.id,
-        location: ["root"],
+        location: ["testing/testing_folder"],
       };
       res.redirect(`/home/${user.id}`);
     } else {
@@ -86,16 +86,16 @@ class userController {
   }
 
   /* This method will get all the files that are shared with the current user */
-  static async getFilesShared(req, res) {}
+  static async getFilesShared(req, res) { }
 
   /* Here is the dessicion of the update methods to be usede */
-  static async updateUser(req, res) {}
+  static async updateUser(req, res) { }
 
   /* This method is suposed to update the password depending on the user's email */
-  static async updateUserPassword(req, res) {}
+  static async updateUserPassword(req, res) { }
 
   /* This method is suposed to update the first name depending on the user's email */
-  static async updateUserName(req, res) {}
+  static async updateUserName(req, res) { }
 }
 
 module.exports = userController;

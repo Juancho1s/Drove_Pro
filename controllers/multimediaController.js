@@ -10,15 +10,15 @@ class multimediaController {
   /* Get all files and folders in a specific path  */
   static async homeRendering(req, res) {
 
-    let cryp1 = methods.location(req) + "/movies"; 
+    let cryp1 = methods.location(req) + "/movies";
 
     const encryptionKey = req.session.userData.email;
     const iv = req.session.userData.password;
-    let cryps = crypto.AES.encrypt(cryp1, encryptionKey, {iv}).toString().replace(/\+/g, '-').replace(/\//g, '_');
+    let cryps = crypto.AES.encrypt(cryp1, encryptionKey, { iv }).toString().replace(/\+/g, '-').replace(/\//g, '_');
     res.render("home", {
       title: "Home",
       stay: true,
-      location: methods.location(req),
+      location: methods.pathEncryption(req),
       multimedia: {
         Folder1: {
           id_user: req.params.id,

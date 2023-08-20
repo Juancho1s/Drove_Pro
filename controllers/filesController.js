@@ -1,3 +1,4 @@
+const APIServer = require("./services/APIServer");
 const methods = require("./services/methods");
 const fileORM = require("../models/fileORM");
 const crypto = require("crypto-js");
@@ -8,13 +9,14 @@ const fs = require("fs");
 
 class filesController {
   /* This method will get all the files of any specific storage location */
-  static async getAllFiles(req, res) {}
+  static async getAllFiles(req, res) { }
 
   /* This method will create a file in any specific location */
-  static async createFile(req, res) {}
+  static async createFile(req, res) { }
 
   /* This method will upload a selected file from the user stuff to the server */
   static async uploadFile(req, res) {
+    let userId = req.session.userData.id;
     try {
       let file = req.files;
       let originalname = file[0].originalname;
@@ -22,35 +24,41 @@ class filesController {
       let size = file[0].size;
       let date = new Date;
       let pathLocation = `${methods.location(req)}/${originalname}`;
+
       let name = path.basename(
         originalname,
         type
       );
 
-        let result = fileORM.create({
-          name: name,
-          type: type,
-          creationDate: date,
-          size: size,
-          usersAndPermission: {},
-          path: pathLocation,
-          pathBefore: methods.location(req),
-          user_id: req.session.userData.id,
-        });
+      let result = fileORM.create({
+        name: name,
+        type: type,
+        creationDate: date,
+        size: size,
+        usersAndPermission: {},
+        path: pathLocation,
+        pathBefore: methods.location(req),
+        user_id: userId,
+      });
+
+      APIServer.uploadFileAPI(req);
+
+      res.redirect(req.headers.origin);
 
     } catch (error) {
       console.log("There was an error with:" + error)
+      res.redirect(`/home/${userId}`, 500);
     }
   }
 
   /* This method will give you the file to download and set it in the download local storage */
-  static async downloadFile(req, res) {}
+  static async downloadFile(req, res) { }
 
   /* This method will update the name of any selected file */
-  static async udateFile(req, res) {}
+  static async udateFile(req, res) { }
 
   /* This method will move a file to any selected socation of the user's storage */
-  static async moveFileTo(req, res) {}
+  static async moveFileTo(req, res) { }
 }
 
 module.exports = filesController;
