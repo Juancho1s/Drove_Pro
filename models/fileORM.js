@@ -41,9 +41,6 @@ const File = sequelize.define("files", {
   user_id: {
     type: DataTypes.INTEGER,
   },
-  folder_id: {
-    type: DataTypes.INTEGER,
-  }
 });
 
 module.exports = File;

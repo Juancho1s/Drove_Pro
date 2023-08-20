@@ -98,6 +98,4 @@ class userController {
   static async updateUserName(req, res) {}
 }
 
-module.exports = {
-  userController,
-};
+module.exports = userController;

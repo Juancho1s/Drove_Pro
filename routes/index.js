@@ -1,21 +1,17 @@
-var express = require("express");
-var router = express.Router();
-
 const crypto = require("crypto-js");
+const express = require("express");
 const multer = require("multer");
+
+const multimediaController = require("../controllers/multimediaController");
+const sessionStarting = require("../controllers/services/sessionStarting");
+const foldersController = require("../controllers/foldersController");
+const filesController = require("../controllers/filesController");
+const usersController = require("../controllers/usersController");
+const methods = require("../controllers/services/methods");
+
+const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-
-const {
-  userController,
-} = require("../controllers/usersController");
-const {
-  folderController,
-  fileController,
-  multimediaController,
-} = require("../controllers/multimediaController");
-const methods = require("../controllers/services/methods");
-const sessionStarting = require("../controllers/services/sessionStarting");
 
 /* GET */
 
@@ -32,7 +28,7 @@ router.get("/signup", sessionStarting.clearSigup);
 router.get(
   "/home/:id",
   sessionStarting.checkUserSession,
-  multimediaController.getAllfolderAndFilesOf
+  multimediaController.homeRendering
 );
 
 router.get(
@@ -45,9 +41,11 @@ router.get(
     let path = req.params.path;
 
     let cryp1 = location + "/movies";
-    let cryp1ed = crypto.AES.encrypt(cryp1, encryptionKey, {mode: crypto.mode.CBC}).toString(crypto.enc.Base64);
+    let cryp1ed = crypto.AES.encrypt(cryp1, encryptionKey, {
+      mode: crypto.mode.CBC,
+    }).toString(crypto.enc.Base64);
 
-    try{
+    try {
       res.render("folder", {
         title: "Caca en uña",
         stay: true,
@@ -71,22 +69,29 @@ router.get(
     } catch (error) {
       console.error("Error while processing folder:", error);
     }
-
   }
 );
 
 /* POST */
 
-router.post("/newfile");
+router.post(
+  "/newfiles/:location",
+  sessionStarting.checkUserSession,
+  upload.array("fileUpload"),
+  filesController.uploadFile
+);
 
-router.post("/newfolder", upload.any("folder"), folderController.createFolder);
+router.post(
+  "/newfolder/:location",
+  sessionStarting.checkUserSession,
+  upload.single("folderUpload"),
+  foldersController.createFolder
+);
 
 /* This post give me the input of the user to start its session */
-router.post("/login", userController.getUserByEON);
+router.post("/login", usersController.getUserByEON);
 
 /* This post gives us a new user with all the information needed for him in order to be created */
-router.post("/signup", userController.addUser);
-
-router.post("/uploadFolder/:path", folderController.createFolder);
+router.post("/signup", usersController.addUser);
 
 module.exports = router;

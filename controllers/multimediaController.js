@@ -8,7 +8,7 @@ const fs = require("fs");
 
 class multimediaController {
   /* Get all files and folders in a specific path  */
-  static async getAllfolderAndFilesOf(req, res) {
+  static async homeRendering(req, res) {
 
     let cryp1 = methods.location(req) + "/movies"; 
 
@@ -18,6 +18,7 @@ class multimediaController {
     res.render("home", {
       title: "Home",
       stay: true,
+      location: methods.location(req),
       multimedia: {
         Folder1: {
           id_user: req.params.id,

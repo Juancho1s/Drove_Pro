@@ -27,7 +27,7 @@ class foldersController {
       const locationPath = req.params.path;
       let id_user = req.session.userData.id;
   
-      methods.processFolder(newFolder, req);
+      methods.processFolder(uploadedFiles, req);
   
       if (req.session.userData.location.length == 1) {
         res.redirect(`/home/${id_user}/folder/:path`);
