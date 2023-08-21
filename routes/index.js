@@ -77,7 +77,7 @@ router.get(
 router.post(
   "/newfiles/:location",
   sessionStarting.checkUserSession,
-  upload.array("fileUpload"),
+  upload.single("fileUpload"),
   filesController.uploadFile
 );
 

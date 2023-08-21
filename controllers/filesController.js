@@ -3,7 +3,6 @@ const methods = require("./services/methods");
 const fileORM = require("../models/fileORM");
 const crypto = require("crypto-js");
 const { Op } = require("sequelize");
-const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
@@ -17,38 +16,42 @@ class filesController {
   /* This method will upload a selected file from the user stuff to the server */
   static async uploadFile(req, res) {
     let userId = req.session.userData.id;
-    try {
-      let file = req.files;
-      let originalname = file[0].originalname;
-      let type = path.extname(originalname);
-      let size = file[0].size;
-      let date = new Date;
-      let pathLocation = `${methods.location(req)}/${originalname}`;
+    let file = req.file;
 
-      let name = path.basename(
-        originalname,
-        type
-      );
-
-      let result = fileORM.create({
-        name: name,
-        type: type,
-        creationDate: date,
-        size: size,
-        usersAndPermission: {},
-        path: pathLocation,
-        pathBefore: methods.location(req),
-        user_id: userId,
-      });
-
-      APIServer.uploadFileAPI(req);
-
-      res.redirect(req.headers.origin);
-
-    } catch (error) {
-      console.log("There was an error with:" + error)
-      res.redirect(`/home/${userId}`, 500);
+    if (!file) {
+      return res.redirect(`home/${userId}/folder/${methods.pathEncryption(req)}`);
     }
+
+    let originalname = file.originalname;
+    let type = path.extname(originalname);
+    let size = file.size;
+    let date = new Date;
+    let pathLocation = `${methods.location(req)}/${originalname}`;
+
+    let name = path.basename(
+      originalname,
+      type
+    );
+
+    let result = fileORM.create({
+      name: name,
+      type: type,
+      creationDate: date,
+      size: size,
+      usersAndPermission: {},
+      path: pathLocation,
+      pathBefore: methods.location(req),
+      user_id: userId,
+    });
+
+    APIServer.uploadFileAPI(req, res, file);
+
+    if (req.session.userData.location.length > 1) {
+      res.redirect(`http://localhost:3000/home/${userId}/folder/${methods.pathEncryption}`);
+    }else{
+      res.redirect(`http://localhost:3000/home/${userId}`);
+    }
+
   }
 
   /* This method will give you the file to download and set it in the download local storage */

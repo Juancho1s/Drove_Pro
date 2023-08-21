@@ -1,41 +1,51 @@
+// const fetchs = require("node-fetch");
+
 const methods = require("./methods");
 
 class APIServer {
-  static async uploadFileAPI(req) {
+  static async uploadFileAPI(req, res, file) {
     // Remplace this variable with the actual path of the folder you are.
     let pathIn = methods.location(req);
 
-    // Remplace 'exampleID' with the actual id of the FILE INPUT
-    let file = req.files;
+    let externalServerUrl = "https://gymalwaysinshape.000webhostapp.com/upload.php?path=" + pathIn + "/";
+
 
     if (!file) {
-      alert("Please select a file.");
-      return;
+      return res.status(400).send('No file uploaded');
     }
 
-    let formData = new FormData();
+    const formData = new FormData();
 
-    for (const i of file) {
-      formData.append("files[]", i);
-    }
+    console.log(new Blob(file.buffer))
 
-    fetch(
-      "https://gymalwaysinshape.000webhostapp.com/upload.php?path=" +
-      pathIn +
-      "/",
-      {
-        method: "POST",
+    formData.append('file', new Blob(file.buffer), file.originalname);
+
+    try {
+      const response = await fetch(externalServerUrl, {
+        method: 'POST',
         body: formData,
-      }
-    )
-      .then((response) => response.text())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
       });
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      res.status(500).send('Internal server error');
+    }
+
+    // fetch(
+    //   ,
+    //   {
+    //     method: "POST",
+    //     body: formData,
+    //   }
+    // )
+    //   .then((response) => response.text())
+    //   .then((data) => {
+    //     console.log(data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //   });
   }
+
   static async deleteFolder() {
     // Remplace this with the actual path of the folder you want to delete
     var folderPath = "testing/testing_folder";
@@ -99,4 +109,3 @@ class APIServer {
 }
 
 module.exports = APIServer;
-
