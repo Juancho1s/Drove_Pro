@@ -2,7 +2,7 @@
 <!-- logo -->
 
 <nav class="flex space-x-8 justify-between w-screen bg-white py-3 h-auto">
-    <img class="h-12 w-44" src="../public/img/DrovePro flat - copia.png" alt="">
+    <img class="h-12 w-44" src="public/img/DrovePro flat - copia.png" alt="">
 
     <!-- search bar -->
 
@@ -13,11 +13,11 @@
 
     <!-- icons -->
     <div class="mt-4 pr-7 flex space-x-5 relative">
-        <button><img class="h-6 w-6" src="../public/img/question.png" alt=""></button>
+        <button><img class="h-6 w-6" src="public/img/question.png" alt=""></button>
 
         <button id="dropdownDefaultButton9" data-dropdown-toggle="dropdown9"
             class="text-black  border-gray-400 hover:bg-gray-300 rounded-full font-sans  font-medium text-sm  text-center items-center"
-            type="button"><img class="h-6 w-6" src="../public/img/settings.png" alt=""> </button>
+            type="button"><img class="h-6 w-6" src="public/img/settings.png" alt=""> </button>
         <!-- Dropdown menu -->
 
         <div id="dropdown9"
@@ -32,13 +32,44 @@
                         class="block px-4 py-2 font-medium font-sans text-black hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Help</a>
                 </li>
             </ul>
-        
+
         </div>
 
-        <button><img src="../public/img/user.png" alt="" class="h-6 w-6"></button>
+        <button id="dropdownDefaultButton10" data-dropdown-toggle="dropdown10"
+            class="text-black  border-gray-400 hover:bg-gray-300 rounded-full font-sans  font-medium text-sm  text-center items-center"
+            type="button"><img class="h-6 w-6" src="public/img/user.png" alt=""> </button>
+        <!-- Dropdown menu -->
+
+        <div id="dropdown10"
+            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton9">
+                <li class="flex-row justify-between space-x-7">
+
+                    <a href="#" id="logoutButton" type="button"
+                        class="px-4 p y-2 font-medium font-sans text-black hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex items-center justify-between">
+                        <img src="public/img/logout.png" alt="" class="w-3 h-3">
+                        sing Out</a>
+                </li>
+
+            </ul>
+
+        </div>
+
     </div>
+
+
 </nav>
 
+<script>
+    const logout = () => {
+        sessionStorage.removeItem('token');
+        window.location = '/views/log_in.hbs';
+    }
+    const logoutButton = document.getElementById('logoutButton');
+
+    logoutButton.addEventListener('click', logout);
+</script>
 
 <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
