@@ -76,7 +76,7 @@ class userController {
         email: user.email,
         password: user.password,
         id: user.id,
-        location: ["testing/testing_folder"],
+        location: ["testing"],
       };
       res.redirect(`/home/${user.id}`);
     } else {

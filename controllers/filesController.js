@@ -8,7 +8,17 @@ const fs = require("fs");
 
 class filesController {
   /* This method will get all the files of any specific storage location */
-  static async getAllFiles(req, res) { }
+  static async getAllFiles(req, res) {
+    let pathFileter = `${methods.location(req)}%`
+    let results = await fileORM.findAll({
+      where: {
+        path: {
+          [Op.like]: pathFileter,
+        }
+      }
+    });
+    return results;
+  }
 
   /* This method will create a file in any specific location */
   static async createFile(req, res) { }
@@ -33,7 +43,7 @@ class filesController {
       type
     );
 
-    let result = fileORM.create({
+    let result = await fileORM.create({
       name: name,
       type: type,
       creationDate: date,
@@ -44,11 +54,11 @@ class filesController {
       user_id: userId,
     });
 
-    APIServer.uploadFileAPI(req, res, file);
+    await APIServer.uploadFileAPI(req, res, file);
 
     if (req.session.userData.location.length > 1) {
       res.redirect(`http://localhost:3000/home/${userId}/folder/${methods.pathEncryption}`);
-    }else{
+    } else {
       res.redirect(`http://localhost:3000/home/${userId}`);
     }
 

@@ -1,5 +1,3 @@
-// const fetchs = require("node-fetch");
-
 const methods = require("./methods");
 
 class APIServer {
@@ -7,43 +5,32 @@ class APIServer {
     // Remplace this variable with the actual path of the folder you are.
     let pathIn = methods.location(req);
 
-    let externalServerUrl = "https://gymalwaysinshape.000webhostapp.com/upload.php?path=" + pathIn + "/";
-
 
     if (!file) {
       return res.status(400).send('No file uploaded');
     }
 
-    const formData = new FormData();
+    let formData = new FormData();
 
-    console.log(new Blob(file.buffer))
-
-    formData.append('file', new Blob(file.buffer), file.originalname);
-
+    formData.append('file', file);
     try {
-      const response = await fetch(externalServerUrl, {
+      fetch('https://gymalwaysinshape.000webhostapp.com/upload.php?path=' + pathIn + '/', {
         method: 'POST',
         body: formData,
-      });
+        headers: {
+          'Content-Type': file.mimetype, // Set the appropriate content type
+        },
+      })
+        .then(response => response.text())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     } catch (error) {
-      console.error('Error uploading file:', error);
-      res.status(500).send('Internal server error');
+      console.log(error)
     }
-
-    // fetch(
-    //   ,
-    //   {
-    //     method: "POST",
-    //     body: formData,
-    //   }
-    // )
-    //   .then((response) => response.text())
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
   }
 
   static async deleteFolder() {

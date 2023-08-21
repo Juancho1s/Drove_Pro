@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload Example</title>
+</head>
+<body>
+    <h2>Upload a File</h2>
+    <form id="myForm" enctype="multipart/form-data">
+        <input id="exampleID" type="file" name="uploaded_file">
+        <button type="button" onclick="uploadFile()">Submit </button>
+    </form>
+    
+    <form enctype="multipart/form-data">
+        <button type="button" onclick="deleteFolder()">Delete</button>
+    </form>
+
+    <form enctype="multipart/form-data">
+        <button type="button" onclick="createEmptyFolder()">Create Empty Folder</button>
+    </form>
+
+    <form enctype="multipart/form-data">
+        <button type="button" onclick="deleteFile()">Delete File</button>
+    </form>
+    <p id="output"></p>
+    <p>---------------------</p>
+    <input type="file" id="folderInput" webkitdirectory multiple>
+    <button onclick="handleSelection()">Upload</button>
+    <p>----------------------</p>
+    <input type="file" id="folderInput2" webkitdirectory multiple>
+    <button id="processButton">Process</button>
+    <p>----------------------</p>
+    <a href="https://gymalwaysinshape.000webhostapp.com/testing/GatoDiceMama.mp4" download="GatoDiceMama">
+        <img src="./download-icon-dwonload-symbol-free-vector.jpg" alt="Download File">
+      </a>
+</body>
+<script src="/JavaScript/ServerScripts.js"></script>
+<script src="./getFilesAndFolders.js"></script>
+</html>
