@@ -1,0 +1,32 @@
+
+
+cancel1.addEventListener("click", () => {
+    const content1 = document.querySelector(".content1");
+    const cancel1 = document.getElementById("cancel1");
+    const contenthi = document.getElementById("contenthi");
+    content1.classList.remove("relative");
+    contenthi.classList.remove("absolute");
+    content1.classList.remove("flex");
+    content1.classList.add("hidden");
+});
+
+cancel2.addEventListener("click", () => {
+  const content2 = document.querySelector(".content2");
+  const cancel2 = document.getElementById("cancel2");
+  const contenthi = document.getElementById("contenthi");
+  content2.classList.remove("relative");
+  contenthi.classList.remove("absolute");
+  content2.classList.remove("flex");
+  content2.classList.add("hidden");
+});
+
+
+cancel3.addEventListener("click", () => {
+  const content3 = document.querySelector(".content3");
+  const cancel3 = document.getElementById("cancel3");
+  const contenthi = document.getElementById("contenthi");
+  content3.classList.remove("relative");
+  contenthi.classList.remove("absolute");
+  content3.classList.remove("flex");
+  content3.classList.add("hidden");
+});
