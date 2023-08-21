@@ -1,0 +1,28 @@
+<div class="w-screen h-screen flex items-center justify-center bg-transparent">
+
+    <div class="w-5/12 h-64 bg-gray-300 rounded-lg ">
+        <div class="px-52">
+            <input class="rounded-lg w-36 h-10 mt-10 font-sans" id="fileInput" type="file" webkitdirectory>
+        </div>
+        <div id="message" class="h-10 ml-48 mt-6 font-sans" style="display: none; color: rgb(49, 49, 49);">Folder loaded successfully
+        </div>
+        <div class="flex align-bottom justify-center space-x-4 mt-8">
+            <button class="text-black bg-gray-400 rounded-md border border-gray-500 hover:bg-gray-500 font-sans font-medium text-sm px-4 py-1.5 text-center items-center">Upload</button>
+            <button class="text-black bg-gray-400 rounded-md border border-gray-500 hover:bg-gray-500 font-sans font-medium text-sm px-4 py-1.5 text-center items-center">Cancel</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const fileInput = document.getElementById("fileInput");
+    const message = document.getElementById("message");
+
+    fileInput.addEventListener("change", () => {
+        showMessage();
+    });
+
+    function showMessage() {
+        message.style.display = "block";
+    }
+</script>

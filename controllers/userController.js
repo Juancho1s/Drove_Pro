@@ -3,6 +3,7 @@ const multimediaController = require("./multimediaController");
 const loginValidation = require("./services/loginValidation");
 const signupValidation = require("./services/signupValidation");
 const { Op } = require("sequelize");
+const crypto = require("crypto");
 
 /* This calss will contain all the refered method to the users, these methods are called controllers */
 class userController {
@@ -30,7 +31,9 @@ class userController {
           email: user.email,
           password: user.password,
           id: user.id,
-          location: "root",
+          location: ["root"],
+          encryptionKey: crypto.randomBytes(32),
+          iv: crypto.randomBytes(16),
         }
 
         /* This function create the new user's root */
@@ -77,7 +80,9 @@ class userController {
         username: user.username,
         email: user.email,
         password: user.password,
-        location: "root",
+        location: ["root"],
+        encryptionKey: crypto.randomBytes(32),
+        iv: crypto.randomBytes(16),
       }
       res.redirect(`/home/${user.id}`);
     } else {

@@ -12,24 +12,38 @@ const sequelize = new Sequelize({
 });
 
 const File = sequelize.define("files", {
-    name: {
-        type: DataTypes.STRING,
-    },
-    type: {
-        type: DataTypes.STRING,
-    },
-    creationDate: {
-        type: DataTypes.DATE,
-    },
-    size: {
-        type: DataTypes.DOUBLE,
-    },
-    usersAndPermission: {
-        type: DataTypes.JSON,
-    },
-    path: {
-        type: DataTypes.STRING,
-    },
+  id: {
+    type: DataTypes.INTEGER(10),
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  name: {
+    type: DataTypes.STRING,
+  },
+  type: {
+    type: DataTypes.STRING,
+  },
+  creationDate: {
+    type: DataTypes.DATE,
+  },
+  size: {
+    type: DataTypes.DOUBLE,
+  },
+  usersAndPermission: {
+    type: DataTypes.JSON,
+  },
+  path: {
+    type: DataTypes.STRING,
+  },
+  pathBefore: {
+    type: DataTypes.STRING,
+  },
+  user_id: {
+    type: DataTypes.INTEGER,
+  },
+  folder_id: {
+    type: DataTypes.INTEGER,
+  }
 });
 
 module.exports = File;
