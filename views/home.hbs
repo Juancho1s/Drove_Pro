@@ -1,4 +1,4 @@
-<div class="w-screen bg-white border-t  border-gray-300">
+<div id="contenthi" class="w-screen bg-white border-t  border-gray-300">
 
   <div class="bg-white flex py-9 ">
 
@@ -10,16 +10,24 @@
     <!-- Dropdown menu -->
 
     <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-      <form action="" method="post">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-          <a href="#"
-            class="block px-4 py-2 font-medium font-sans text-black hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">File</a>
-          </li>
-          <li>
-            <input type="file" webkitdirectory>
-          </li>
-        </ul>
-      </form>
+      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        <li>
+          <button id="toggleButton"
+            class="block px-4 py-2 w-full font-medium font-sans text-black hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Upload
+            file</button>
+        </li>
+        <li>
+          <button id="toggleButton1"
+            class="block px-4 py-2 w-full font-medium font-sans text-black hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Upload
+            folder</button>
+        </li>
+        <li>
+          <button id="toggleButton2"
+            class="block px-4 py-2 w-full font-medium font-sans text-black hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Create
+            folder</button>
+        </li>
+      </ul>
+
     </div>
 
 
@@ -155,18 +163,14 @@
           class="hidden absolute bg-white text-sm border rounded-lg font-sans font-medium border-gray-300 shadow-md py-2 w-36">
           <div class="flex items-center align-bottom px-4 py-2 hover:bg-gray-100">
             <img src="/img/renom.png" alt="" class="w-4 h-4 mr-2  ">
-            <a href="#" class=" hover:bg-gray-100">Rename</a>
+            <a href="#" class=" hover:bg-gray-100">Download</a>
           </div>
 
           <div class="flex items-center align-bottom px-4 py-2 hover:bg-gray-100">
             <img src="/img/dele.png" alt="" class="w-4 h-4 mr-2  ">
-            <a href="#" class=" hover:bg-gray-100">Delete</a>
+            <button id="delet" class=" hover:bg-gray-100">Delete</button>
           </div>
 
-          <div class="flex items-center align-bottom px-4 py-2 hover:bg-gray-100">
-            <img src="/img/send.png" alt="" class="w-4 h-4 mr-2  ">
-            <a href="#" class=" hover:bg-gray-100">Share</a>
-          </div>
 
         </div>
 
@@ -188,7 +192,7 @@
         {{#each multimedia}}
 
 
-        <div id="contextMenuTrigger" class="fol">
+        <div id="contextMenuTrigger1" class="fol1">
 
           <a id=""
             class="bg-gray-300 flex align-middle justify-between items-center h-14 w-56 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2"
@@ -203,25 +207,16 @@
         </div>
 
         {{!-- Aqui se encuentra el menu desplegable al dar clic derecho en cada una de las carpetas --}}
-
-        <div id="customContextMenu"
+        <div id="customContextMenu1"
           class="hidden absolute bg-white text-sm border rounded-lg font-sans font-medium border-gray-300 shadow-md py-2 w-36">
-          <div class="flex items-center align-bottom px-4 py-2 hover:bg-gray-100">
-            <img src="/img/renom.png" alt="" class="w-4 h-4 mr-2  ">
-            <a href="#" class=" hover:bg-gray-100">Rename</a>
-          </div>
-
+        
           <div class="flex items-center align-bottom px-4 py-2 hover:bg-gray-100">
             <img src="/img/dele.png" alt="" class="w-4 h-4 mr-2  ">
-            <a href="#" class=" hover:bg-gray-100">Delete</a>
-          </div>
-
-          <div class="flex items-center align-bottom px-4 py-2 hover:bg-gray-100">
-            <img src="/img/send.png" alt="" class="w-4 h-4 mr-2  ">
-            <a href="#" class=" hover:bg-gray-100">Share</a>
+            <button id="delet" class=" hover:bg-gray-100">Delete</button>
           </div>
 
         </div>
+
 
         {{/each}}
 
@@ -231,10 +226,147 @@
 
   </div>
 
-  {{!-- Aqui termina la parte intermedia de la pagina, la barra lateral y las paginas a mostrar --}}
+</div>
+
+{{!-- Aqui termina la parte intermedia de la pagina, la barra lateral y las paginas a mostrar --}}
+
+
+
+
+
+
+{{!-- AQUI EMPIEZA EL BOTON PARA AGREGAR FILE --}}
+
+
+
+<div class="content1 hidden w-screen h-screen  items-center justify-center bg-rgba-gray">
+
+  <div class=" w-5/12 h-64 bg-gray-100 rounded-lg">
+    <div class="px-52">
+      <input class="rounded-lg w-36 h-10 mt-10 font-sans" id="fileInput" type="file" file>
+    </div>
+    <div id="message" class="h-10 ml-48 mt-6 font-sans" style="display: none; color: rgb(49, 49, 49);">File loaded
+      successfully
+    </div>
+    <div class="flex align-bottom justify-center space-x-4 mt-8">
+      <button
+        class="text-black bg-gray-400 rounded-md border border-gray-500 hover:bg-gray-500 font-sans font-medium text-sm px-4 py-1.5 text-center items-center">Upload</button>
+      <button id="cancel1"
+        class="text-black bg-gray-400 rounded-md border border-gray-500 hover:bg-gray-500 font-sans font-medium text-sm px-4 py-1.5 text-center items-center">Cancel</button>
+    </div>
+  </div>
 
 </div>
 
-<script src="/Interactions/RightClick.js">
+<script>
+  const fileInput = document.getElementById("fileInput");
+  const message = document.getElementById("message");
 
+  fileInput.addEventListener("change", () => {
+    showMessage();
+  });
+
+  function showMessage() {
+    message.style.display = "block";
+  }
 </script>
+
+
+
+
+
+
+
+{{!-- AQUI EMPIEZA EL BOTON PARA AGREGAR FOLDER --}}
+
+
+
+
+<div class="content2 w-screen h-screen hidden items-center justify-center bg-rgba-gray">
+
+  <div class="w-5/12 h-64 bg-gray-300 rounded-lg ">
+    <div class="px-52">
+      <input class="rounded-lg w-32 h-10 mt-10 font-sans" id="fileInput" type="file" webkitdirectory directory multiple>
+    </div>
+    <div id="message" class="h-10 ml-48 mt-6 font-sans" style="display: none; color: rgb(49, 49, 49);">Folder loaded
+      successfully
+    </div>
+    <div class="flex align-bottom justify-center space-x-4 mt-8">
+      <button
+        class="text-black bg-gray-400 rounded-md border border-gray-500 hover:bg-gray-500 font-sans font-medium text-sm px-4 py-1.5 text-center items-center">Upload</button>
+      <button id="cancel2"
+        class="text-black bg-gray-400 rounded-md border border-gray-500 hover:bg-gray-500 font-sans font-medium text-sm px-4 py-1.5 text-center items-center">Cancel</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const fileInput = document.getElementById("fileInput");
+  const message = document.getElementById("message");
+
+  fileInput.addEventListener("change", () => {
+    showMessage();
+  });
+
+  function showMessage() {
+    message.style.display = "block";
+  }
+</script>
+
+
+
+
+
+
+<div class="content3 w-screen h-screen hidden items-center justify-center bg-rgba-gray">
+
+  <div class="w-5/12 h-64 bg-gray-300 rounded-lg ">
+    <div class="px-36">
+      <input class="rounded-lg w-72 h-10 mt-10 font-sans" id="fileInput" type="text">
+    </div>
+    <div class="flex align-bottom justify-center space-x-4 mt-8">
+      <button
+        class="text-black bg-gray-400 rounded-md border border-gray-500 hover:bg-gray-500 font-sans font-medium text-sm px-4 py-1.5 text-center items-center">Upload</button>
+      <button id="cancel3"
+        class="text-black bg-gray-400 rounded-md border border-gray-500 hover:bg-gray-500 font-sans font-medium text-sm px-4 py-1.5 text-center items-center">Cancel</button>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div class="content3 w-screen h-screen hidden items-center justify-center bg-rgba-gray font-sans">
+
+  <div class="w-5/12 h-64 bg-gray-300 rounded-lg ">
+    <div class="text-center space-y-4 pt-6">
+      <p class="font-semibold text-2xl">DELETE</p>
+      <p class="font-medium">Are you sure you want to delete this folder?</p>
+    </div>
+    <div class="flex align-bottom justify-center space-x-4 mt-8">
+      <button
+        class="text-black bg-gray-400 rounded-md border border-gray-500 hover:bg-gray-500 font-sans font-medium text-sm px-4 py-1.5 text-center items-center">Delete</button>
+      <button id="cancel3"
+        class="text-black bg-gray-400 rounded-md border border-gray-500 hover:bg-gray-500 font-sans font-medium text-sm px-4 py-1.5 text-center items-center">Cancel</button>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script src="/Interactions/RightClick.js"></script>
+<script src="/Interactions/hiddenFile.js"></script>
+<script src="/Interactions/cancelBut.js"></script>
+<script src="/Interactions/hiddenFolder.js"></script>
+<script src="/Interactions/createFolder.js"></script>
