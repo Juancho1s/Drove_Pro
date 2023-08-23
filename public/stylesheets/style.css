@@ -1045,6 +1045,10 @@ input[type="range"]::-ms-fill-lower {
   margin-top: 2.25rem;
 }
 
+.box-content {
+  box-sizing: content-box;
+}
+
 .block {
   display: block;
 }
@@ -1123,6 +1127,11 @@ input[type="range"]::-ms-fill-lower {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-min {
+  height: -moz-min-content;
+  height: min-content;
 }
 
 .min-h-screen {
