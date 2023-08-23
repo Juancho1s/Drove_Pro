@@ -35,7 +35,7 @@ class userController {
         };
 
         /* This function create the new user's root */
-        multimediaController.newUserRoot(req, res, next);
+        // multimediaController.newUserRoot(req, res, next);
         res.redirect(`/home/${user.id}`);
       } else {
         res.redirect("/login");

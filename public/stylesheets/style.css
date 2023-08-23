@@ -1125,13 +1125,13 @@ input[type="range"]::-ms-fill-lower {
   height: auto;
 }
 
-.h-screen {
-  height: 100vh;
-}
-
 .h-min {
   height: -moz-min-content;
   height: min-content;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .min-h-screen {
