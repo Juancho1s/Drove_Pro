@@ -1,81 +1,93 @@
 <div class="w-screen bg-slate-300">
 
     <div>
-    <a
-        href="">
-            <button
-                class="">
+        <a href="">
+            <button class="">
             </button>
-    </a>
-</div>
-
-<div class="w-5/12 mx-auto bg-white rounded-md py-10 px-10">
-    <div class="flex justify-center">
-        <img class="w-52" src="../img/DrovePro.png" alt="drove" />
+        </a>
     </div>
 
-    <form class="space-y-4 mt-8" method="post" action="/signup">
-        <div>
-            <label for="username" class="block text-sm font-semibold text-black font-sans">Username</label>
-            <input type="text" id="username" name="username" class="h-9 w-full rounded-md border border-gray-500" />
-        </div>
-        <div>
-            <label for="email" class="block text-sm font-semibold text-black font-sans">Email</label>
-            <input type="email" id="email" name="email" class="h-9 w-full rounded-md border border-gray-500" />
-        </div>
-        <div>
-            <label for="password" class="block text-sm font-semibold text-black font-sans">Password</label>
-            <input type="password" id="password" name="password" class="h-9 w-full rounded-md border border-gray-500" />
+    <div class="w-5/12 mx-auto bg-white rounded-md py-10 px-10">
+        <div class="flex justify-center">
+            <img class="w-52" src="../img/DrovePro.png" alt="drove" />
         </div>
 
-        <div class="bg-black rounded-md">
-            <button type="submit"
-                class="w-full flex justify-center py-2 px-4 font-sans border border-transparent rounded-md shadow-sm text-sm font-semibold text-white bg-black hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                REGISTER
-            </button>
-        </div>
-        <div>
-            <a class="w-full flex justify-center font-sans py-2 px-4 text-sm font-semibold text-gray-700" href="http://localhost:3000/login">LOGIN</a>
-           
-        </div>
+        <form class="space-y-4 mt-8" method="post" action="/signup">
+            <div>
+                <label id="usern" for="username" class="block text-sm font-semibold text-black font-sans">Username</label>
+                <input type="text" id="username" name="username" class="h-9 w-full rounded-md border border-gray-500" />
+            </div>
+            <div>
+                <label id="ema" for="email" class="block text-sm font-semibold text-black font-sans">Email</label>
+                <input type="email" id="email" name="email" class="h-9 w-full rounded-md border border-gray-500" />
+            </div>
+            <div>
+                <label id="pas" for="password" class="block text-sm font-semibold text-black font-sans">Password</label>
+                <input type="password" id="password" name="password"
+                    class="h-9 w-full rounded-md border border-gray-500" />
+            </div>
 
-    
-        <div class="flex justify-center space-x-8">
-            
+            <div class="bg-black rounded-md">
+                <button id="sig" type="submit"
+                    class="w-full flex justify-center py-2 px-4 font-sans border border-transparent rounded-md shadow-sm text-sm font-semibold text-white bg-black hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                    SIGN UP
+                </button>
+            </div>
+            <div>
+                <a id="log" class="w-full flex justify-center font-sans py-2 px-4 text-sm font-semibold text-gray-700"
+                    href="http://localhost:3000/login">LOGIN</a>
+
+            </div>
+
+
+            <div class="flex justify-center space-x-8">
+
 
                 <a class="w-30 bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2"
                     href="https://myaccount.google.com/">
-                        <img src="../img/icongoogle.svg" type="" style="display: inline; width:26px;">
-                        Google
+                    <img src="../img/icongoogle.svg" type="" style="display: inline; width:26px;">
+                    Google
                 </a>
 
                 <a class="w-30 bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2"
                     href="https://facebook.com">
-                        <img src="../img/iconfacebook.svg" type="" style="display: inline; width:26px;">
-                        Facebook
+                    <img src="../img/iconfacebook.svg" type="" style="display: inline; width:26px;">
+                    Facebook
                 </a>
-        </div>
+            </div>
 
 
-        <div class="flex justify-center">
-            <a class="w-30 bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2"
-                href="https://appleid.apple.com/auth/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=code&scope=name%20email">
+            <div class="flex justify-center">
+                <a class="w-30 bg-gray-300 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2"
+                    href="https://appleid.apple.com/auth/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=code&scope=name%20email">
                     <img src="../img/iconapple.svg" type="" style="display: inline; width:26px;">
                     Apple
-            </a>
+                </a>
+            </div>
+
+
+
+
+        </form>
+
+
+        <div class="flex justify-center pt-6">
+            <button id="eng2"
+                class="mr-2 bg-transparent hover:bg-gray-200 text-gray-500 font-sans text-base font-normal py-2 px-4 rounded"
+                onclick="changeLanguage2('en')">English</button>
+            <button id="esp2"
+                class="bg-transparent hover:bg-gray-200 text-gray-500 font-sans text-base font-normal py-2 px-4 rounded"
+                onclick="changeLanguage2('es')">Spanish</button>
         </div>
 
-
-    </form>
-
-</div>
-<div>
-    <a
-        href="">
-            <button
-                class="">
+    </div>
+    <div>
+        <a href="">
+            <button class="">
             </button>
-    </a>
-</div>
+        </a>
+    </div>
 
 </div>
+
+<script src="/Interactions/translat.js"></script>
