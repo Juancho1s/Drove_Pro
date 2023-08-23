@@ -47,6 +47,9 @@ const translations = {
     sa: "Sign Out",
     sett: "Settings",
     hel: "Help",
+    toggleButton45: "Delete",
+    toggleButton4: "Delete",
+    toggleButton45: "Download",
   },
   es: {
     userna: "Nombre de usuario o Gmail",
@@ -96,6 +99,9 @@ const translations = {
     sa: "Cerrar Sesion",
     sett: "Ajustes",
     hel: "Ayuda",
+    toggleButton45: "Eliminar",
+    toggleButton4: "Eliminar",
+    dow: "Descargar",
   },
 };
 
@@ -162,5 +168,8 @@ function changeLanguage3(lang) {
   document.getElementById("sa").textContent = langTranslations.sa;
   document.getElementById("sett").textContent = langTranslations.sett;
   document.getElementById("hel").textContent = langTranslations.hel;
+  document.getElementById("dow").textContent = langTranslations.dow;
+  document.getElementById("toggleButton4").textContent = langTranslations.toggleButton4;
+  document.getElementById("toggleButton45").textContent =langTranslations.toggleButton45;
 }
 

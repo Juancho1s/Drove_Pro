@@ -8,6 +8,7 @@ cancel1.addEventListener("click", () => {
     contenthi.classList.remove("absolute");
     content1.classList.remove("flex");
     content1.classList.add("hidden");
+    
 });
 
 cancel2.addEventListener("click", () => {
