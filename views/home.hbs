@@ -153,18 +153,18 @@
 
       {{!-- Aqui van a estar los recientes --}}
 
-      <p class="text-base font-sans font-medium pb-5">Recent</p>
+      <p class="text-base font-sans font-medium pb-5">Files</p>
 
       <div class="space-x-5 flex">
 
-        {{#each multimedia}}
+        {{#each filesIn}}
 
 
         <div id="contextMenuTrigger" class="fol">
 
           <a id=""
             class="bg-gray-300 flex align-middle justify-between items-center h-14 w-56 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none"
-            href="">
+            href="/home/folder/{{this.path}}">
             {{this.name}}
             <div>
               <img class="rounded-lg" src="/img/imgpdf.png" type="" style="display: inline; width: 35px;;">
@@ -190,7 +190,6 @@
 
 
         </div>
-
         {{/each}}
 
       </div>
@@ -206,14 +205,14 @@
 
 
 
-        {{#each multimedia}}
-
+        {{#each foldersIn}}
+        
 
         <div id="contextMenuTrigger1" class="fol1">
 
           <a id=""
             class="bg-gray-300 flex align-middle justify-between items-center h-14 w-56 text-black py-2 px-4 rounded hover:bg-gray-500 text-sm font-sans font-medium focus:outline-none focus:ring-2"
-            href="/home/{{this.id_user}}/folder/{{this.path}}">
+            href="/home/folder/{{this.path}}">
             {{this.name}}
             <div>
               <img src="../img/folder.png" type="" style="display: inline; width:26px;">
@@ -235,7 +234,6 @@
           </div>
 
         </div>
-
 
         {{/each}}
 
@@ -395,11 +393,6 @@
   </div>
 
 </div>
-
-
-
-<p class="hidden" id="location">{{location}}</p>
-<p class="hidden" id="userID">{{userId}}</p>
 
 
 

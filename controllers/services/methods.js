@@ -11,13 +11,29 @@ class methods {
     return pahtCreation;
   }
 
-  static pathEncryption(req){
+  static pathEncryption(req) {
     const encryptionKey = req.session.userData.email;
     const iv = req.session.userData.password;
     let location = methods.location(req);
     let cryps = crypto.AES.encrypt(location, encryptionKey, { iv }).toString().replace(/\+/g, '-').replace(/\//g, '_');
 
     return cryps;
+  }
+
+  static pathEncryption(req, filePath) {
+    const encryptionKey = req.session.userData.email;
+    const iv = req.session.userData.password;
+    let cryps = crypto.AES.encrypt(filePath, encryptionKey, { iv }).toString().replace(/\+/g, '-').replace(/\//g, '_');
+
+    return cryps;
+  }
+
+  static decryption(encrypted) {
+    const encryptionKey = req.session.userData.email;
+    const iv = req.session.userData.password;
+    const decrypted = CryptoJS.AES.decrypt(encrypted, encryptionKey, { iv }).toString(CryptoJS.enc.Utf8);
+
+    return decrypted
   }
 
   /* This method will process all the folder structure then upload it to the database */

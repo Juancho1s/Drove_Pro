@@ -1,5 +1,6 @@
 const signupValidation = require("./services/signupValidation");
 const multimediaController = require("./multimediaController");
+const folderORM = require("./foldersController");
 const loginValidation = require("./services/loginValidation");
 const usersORM = require("../models/userORM");
 const { Op } = require("sequelize");
@@ -17,7 +18,7 @@ class userController {
       /* In case it is invalid */
       res.redirect("/login");
     } else {
-      /* In case it is valid the user will be added to the data base */
+      /* In case it is valid, the user will be added to the data base */
       let user = await usersORM.create({
         username: req.body["username"],
         email: req.body["email"],
@@ -30,13 +31,13 @@ class userController {
           username: user.username,
           email: user.email,
           password: user.password,
-          id: user.id,
-          location: ["testing/testing_folder"],
+          location: [`root${user.id}`],
         };
 
         /* This function create the new user's root */
-        multimediaController.newUserRoot(req, res, next);
-        res.redirect(`/home/${user.id}`);
+        folderORM.newUserRoot(req, res, next);
+
+        res.redirect(`/home`);
       } else {
         res.redirect("/login");
       }
@@ -75,10 +76,9 @@ class userController {
         username: user.username,
         email: user.email,
         password: user.password,
-        id: user.id,
-        location: ["testing"],
+        location: [`root${user.id}`],
       };
-      res.redirect(`/home/${user.id}`);
+      res.redirect(`/home`);
     } else {
       /* In case that the user is an invalid one, the server will direct you to the login page */
       res.redirect("/login");

@@ -9,10 +9,37 @@ const fs = require("fs");
 
 class foldersController {
   /* This method will get a specific folder which belong to a specific location */
-  static async getFolder(req, res) { }
+  static async getCurrentFolder(req, res) {
+    try {
+      let location = methods.location(req);
+      let userId = req.session.userData.id;
+      let results = await folderORM.findOne({
+        where: {
+          path: location,
+          id_user: userId,
+        }
+      });
+
+      return results;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   /* This method will get all the folders of any specific location */
-  static async getAllFolders(req, res) { }
+  static async getAllFolders(req, res) {
+    let userId = req.session.userData.id;
+    let pathFolder = methods.decryption(req.params.path);
+    let results = await folderORM.findAll({
+      where: {
+        path: {
+          [Op.like]: pathFolder,
+        },
+        id_user: userId, // if user is logged in then only show his files else show public files
+      }
+    });
+    return results;
+  }
 
   /* This method can update a folder to the database */
   static async uploadFolder(req, res) { }
@@ -48,8 +75,35 @@ class foldersController {
   /* This method will download a selected folder and put it in the download path */
   static async downloadFolder(req, res) { }
 
-  /* This method will update the folder's name and any other thing which can be updated */
-  static async updateFolder(req, res) { }
+  /* This method will update the folder's jsno */
+  static async updateFolderjsonField(req, res) {
+
+  }
+
+  /* This method will update the folder's jsno */
+  static async updateFilesjsonField(req, originalname) {
+    let encryptedLocation = methods.pathEncryption(req, originalname);
+    let location = methods.location(req);
+
+    let row = await folderORM.findOne({
+      where: { path: location }
+    });
+    let filesIn = row.filesIn;
+
+    filesIn.push({
+      name: originalname,
+      path: encryptedLocation,
+    });
+
+
+    await folderORM.update({
+      filesIn: filesIn
+    }, {
+      where: {
+        path: location,
+      }
+    });
+  }
 
   /* This method can move a selected folder to any specific ubication in the user's storage */
   static async moveFolderTo(req, res) { }
@@ -63,20 +117,35 @@ class foldersController {
   /* This method will creat a root for every new user */
   static async newUserRoot(req, res, next) {
     let userId = req.session.userData.id;
+    let newRoot = `root${userId}`;
 
-    const resutls = folderORM.create({
+    const resutls = await folderORM.create({
       id_user: userId,
-      name: `root${userId}`,
+      name: newRoot,
       filesIn: {},
       foldersIn: {},
-      folderBeforePath: "/",
-      path: `/root${userId}`,
+      folderBeforePath: "",
+      path: newRoot,
     });
 
     if (resutls) {
-      next();
-    } else {
-      res.redirect("/login");
+      var path = resutls.folderBeforePath;
+
+      // Name of the folder.
+      let folderName = resutls.name;
+
+      req.session.userData.location.push(resutls.name);
+
+      fetch('https://gymalwaysinshape.000webhostapp.com/createEmptyFolder.php?path=' + path + '&name=' + folderName, {
+        method: 'POST'
+      })
+        .then(response => response.text())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     }
   }
 }

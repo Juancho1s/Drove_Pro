@@ -34,13 +34,13 @@ router.get("/signup", sessionStarting.clearSigup);
 
 /* This get would redirect you to the home page where the user can select any folder or file */
 router.get(
-  "/home/:id",
+  "/home",
   sessionStarting.checkUserSession,
   multimediaController.homeRendering
 );
 
 router.get(
-  "/home/:id/folder/:path",
+  "/home/folder/:path",
   sessionStarting.checkUserSession,
   (req, res) => {
     let location = methods.location(req);
