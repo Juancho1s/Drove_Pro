@@ -3,8 +3,8 @@ const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = new Sequelize({
   host: "localhost",
   username: "root",
-  password: "8462",
-  database: "DrovePro",
+  password: "123456789",
+  database: "drove",
   dialect: "mysql",
   define: {
     timestamps: false,
@@ -41,9 +41,6 @@ const File = sequelize.define("files", {
   user_id: {
     type: DataTypes.INTEGER,
   },
-  folder_id: {
-    type: DataTypes.INTEGER,
-  }
 });
 
 module.exports = File;

@@ -1,9 +1,9 @@
-const usersORM = require("../models/userORM");
+const signupValidation = require("./services/signupValidation");
 const multimediaController = require("./multimediaController");
 const loginValidation = require("./services/loginValidation");
-const signupValidation = require("./services/signupValidation");
+const usersORM = require("../models/userORM");
 const { Op } = require("sequelize");
-const crypto = require("crypto");
+const crypto = require("crypto-js");
 
 /* This calss will contain all the refered method to the users, these methods are called controllers */
 class userController {
@@ -31,10 +31,8 @@ class userController {
           email: user.email,
           password: user.password,
           id: user.id,
-          location: ["root"],
-          encryptionKey: crypto.randomBytes(32),
-          iv: crypto.randomBytes(16),
-        }
+          location: ["testing/testing_folder"],
+        };
 
         /* This function create the new user's root */
         multimediaController.newUserRoot(req, res, next);
@@ -62,10 +60,7 @@ class userController {
     */
     let user = await usersORM.findOne({
       where: {
-        [Op.or]: [
-          { username: username_email }, 
-          { email: username_email }
-        ],
+        [Op.or]: [{ username: username_email }, { email: username_email }],
         password: password,
       },
     });
@@ -80,10 +75,9 @@ class userController {
         username: user.username,
         email: user.email,
         password: user.password,
-        location: ["root"],
-        encryptionKey: crypto.randomBytes(32),
-        iv: crypto.randomBytes(16),
-      }
+        id: user.id,
+        location: ["testing"],
+      };
       res.redirect(`/home/${user.id}`);
     } else {
       /* In case that the user is an invalid one, the server will direct you to the login page */
@@ -92,18 +86,16 @@ class userController {
   }
 
   /* This method will get all the files that are shared with the current user */
-  static async getFilesShared(req, res){}
+  static async getFilesShared(req, res) { }
 
   /* Here is the dessicion of the update methods to be usede */
-  static async updateUser(req, res) {}
+  static async updateUser(req, res) { }
 
   /* This method is suposed to update the password depending on the user's email */
-  static async updateUserPassword(req, res) {}
+  static async updateUserPassword(req, res) { }
 
   /* This method is suposed to update the first name depending on the user's email */
-  static async updateUserName(req, res) {}
+  static async updateUserName(req, res) { }
 }
 
-module.exports = {
-  userController,
-};
+module.exports = userController;

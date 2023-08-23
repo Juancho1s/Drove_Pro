@@ -1,8 +1,12 @@
 // var env = require('./config')();
 // process.env.PORT =  env.port;
+const APIController = require('./controllers/APIController');
+const foldersController = require("./controllers/foldersController");
+const filesController = require("./controllers/filesController");
 
 const passport = require('passport');
 const hbs = require('hbs');
+const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -19,11 +23,6 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-app.use(session({
-  secret:"Drove Profesional",
-  resave: true,
-  saveUninitialized: true,
-}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,6 +30,13 @@ app.set('view engine', 'hbs');
 
 hbs.registerPartials(__dirname + '/views/partials');
 
+
+app.use(session({
+  secret:"Drove Profesional",
+  resave: true,
+  saveUninitialized: true,
+}));
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -39,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', indexRouter);
+app.use('/api', filesController);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
