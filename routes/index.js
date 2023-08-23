@@ -7,10 +7,18 @@ const sessionStarting = require("../controllers/services/sessionStarting");
 const foldersController = require("../controllers/foldersController");
 const filesController = require("../controllers/filesController");
 const usersController = require("../controllers/usersController");
+const APIController = require("../controllers/APIController");
 const methods = require("../controllers/services/methods");
 
 const router = express.Router();
-const storage = multer.memoryStorage();
+const storage = multer.diskStorage({
+  destination: function (_req, file, cb) {
+    cb(null, 'uploads/')  // Specify the destination folder
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
 const upload = multer({ storage: storage });
 
 /* GET */
@@ -78,15 +86,19 @@ router.get("/test", (req, res) => {
 
 /* POST */
 
-router.post(
-  "/newfiles/:location",
-  sessionStarting.checkUserSession,
-  upload.single("fileUpload"),
-  filesController.uploadFile
-);
 
+try {
+  router.post(
+    "/newfiles",
+    sessionStarting.checkUserSession,
+    upload.single("fileInput"),
+    filesController.uploadFile
+  );
+} catch (error) {
+  console.log(error);
+}
 router.post(
-  "/newfolder/:location",
+  "/newfolder",
   sessionStarting.checkUserSession,
   upload.single("folderUpload"),
   foldersController.createFolder

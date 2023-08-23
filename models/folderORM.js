@@ -3,6 +3,8 @@ const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = new Sequelize({
   host: "localhost",
   username: "root",
+  password: "123456789",
+  database: "drove",
   dialect: "mysql",
   define: {
     timestamps: false,

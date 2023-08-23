@@ -13,13 +13,13 @@ const fs = require("fs");
 class multimediaController {
   /* Get all files and folders in a specific path  */
   static async homeRendering(req, res) {
-    let location = methods.pathEncryption(req);
-    let result = await filesController.getAllFiles(req, res);
     res.render("home", {
       title: "Home",
       stay: true,
-      location: location,
-      multimedia: result,
+      userId: req.session.userData.id,
+      encryptedLocation: methods.pathEncryption(req),
+      location: methods.location(req),
+      multimedia: await filesController.getAllFiles(req, res),
     });
 
   }
