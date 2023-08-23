@@ -53,20 +53,20 @@
               class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PDF</a>
           </li>
           <li>
-            <a href="#"
+            <a id="folt" href="#"
               class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Folders</a>
           </li>
           <li>
-            <a href="#"
-              class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">File(zip)</a>
+            <a id="fzip" href="#"
+              class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Files(zip)</a>
           </li>
           <li>
-            <a href="#"
-              class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">File(txt)</a>
+            <a id="ftxt" href="#"
+              class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Files(txt)</a>
           </li>
           <li>
-            <a href="#"
-              class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">File
+            <a id="fpro" href="#"
+              class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Files
               Programming</a>
           </li>
         </ul>
@@ -92,27 +92,22 @@
         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton2">
           <li>
-            <a href="#"
+            <a id="day" href="#"
               class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">1
               day</a>
           </li>
           <li>
-            <a href="#"
+            <a id="week" href="#"
               class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">1
               week</a>
           </li>
           <li>
-            <a href="#"
+            <a id="month" href="#"
               class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">1
               month</a>
           </li>
           <li>
-            <a href="#"
-              class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">1
-              year</a>
-          </li>
-          <li>
-            <a href="#"
+            <a id="all" href="#"
               class="block font-sans px-4 font-medium text-black py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All</a>
           </li>
         </ul>
@@ -153,7 +148,7 @@
 
       {{!-- Aqui van a estar los recientes --}}
 
-      <p class="text-base font-sans font-medium pb-5">Files</p>
+      <p id="arch" class="text-base font-sans font-medium pb-5">Files</p>
 
       <div class="space-x-5 flex">
 
@@ -199,7 +194,7 @@
 
       {{!-- Aqui empieza cada una de las carpetas --}}
 
-      <p class="text-base font-sans font-medium py-5">Folders</p>
+      <p id="fl" class="text-base font-sans font-medium py-5">Folders</p>
 
 
       <div class="space-x-5 flex">
@@ -262,8 +257,7 @@
 
   <div class=" w-5/12 h-64 bg-gray-100 rounded-lg">
     <form action="/newfiles" method="post" enctype="multipart/form-data">
-      <input class="rounded-lg w-36 h-10 mt-10 font-sans px-52" name="fileInput" id="fileInput" type="file">
-      <input
+      <input class="rounded-lg w-36 h-10 mt-10 font-sans px-52" name="fileInput" id="fileInput" type="file"><input
         class="text-black bg-gray-400 rounded-md border border-gray-500 hover:bg-gray-500 font-sans font-medium text-sm px-4 py-1.5 text-center items-center"
         type="submit" value="Upload">
       <button id="cancel1"
@@ -343,7 +337,7 @@
 
   <div class="w-5/12 h-64 bg-gray-300 rounded-lg ">
     <div class="px-36">
-      <button class="rounded-lg w-72 h-10 mt-10 font-sans"></button>
+      <input type="text" class="rounded-lg w-72 h-10 mt-10 font-sans">
     </div>
     <div class="flex align-bottom justify-center space-x-4 mt-8">
       <button
