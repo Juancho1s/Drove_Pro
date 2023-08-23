@@ -88,19 +88,19 @@ class filesController {
 
     const directoryPath = path.join(__dirname, "uploads");
 
-    fs.readdir(directoryPath, (err, files) => {
-      files.forEach((file) => {
-        const filePath = `${directoryPath}/${file}`;
+    // fs.readdir(directoryPath, (err, files) => {
+    //   files.forEach((file) => {
+    //     const filePath = `${directoryPath}/${file}`;
   
-        fs.unlink(filePath, (err) => {
-          if (err) {
-            console.error(`Error deleting ${filePath}: ${err}`);
-          } else {
-            console.log(`Deleted ${filePath}`);
-          }
-        });
-      });
-    });
+    //     fs.unlink(filePath, (err) => {
+    //       if (err) {
+    //         console.error(`Error deleting ${filePath}: ${err}`);
+    //       } else {
+    //         console.log(`Deleted ${filePath}`);
+    //       }
+    //     });
+    //   });
+    // });
 
 
 

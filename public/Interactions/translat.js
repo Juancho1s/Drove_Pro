@@ -169,6 +169,8 @@ function changeLanguage3(lang) {
   document.getElementById("sett").textContent = langTranslations.sett;
   document.getElementById("hel").textContent = langTranslations.hel;
   document.getElementById("dow").textContent = langTranslations.dow;
+  document.getElementById("esp2").textContent = langTranslations.esp2;
+  document.getElementById("eng2").textContent = langTranslations.eng2;
   document.getElementById("toggleButton4").textContent = langTranslations.toggleButton4;
   document.getElementById("toggleButton45").textContent =langTranslations.toggleButton45;
 }
