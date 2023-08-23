@@ -30,3 +30,28 @@ cancel3.addEventListener("click", () => {
   content3.classList.remove("flex");
   content3.classList.add("hidden");
 });
+
+
+
+
+cancel4.addEventListener("click", () => {
+  const content4 = document.querySelector(".content4");
+  const cancel4 = document.getElementById("cancel4");
+  const contenthi = document.getElementById("contenthi");
+  content4.classList.remove("relative");
+  contenthi.classList.remove("absolute");
+  content4.classList.remove("flex");
+  content4.classList.add("hidden");
+});
+
+
+
+cancel5.addEventListener("click", () => {
+  const content5 = document.querySelector(".content5");
+  const cancel5 = document.getElementById("cancel5");
+  const contenthi = document.getElementById("contenthi");
+  content5.classList.remove("relative");
+  contenthi.classList.remove("absolute");
+  content5.classList.remove("flex");
+  content5.classList.add("hidden");
+});
