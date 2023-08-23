@@ -80,10 +80,6 @@ router.get(
   }
 );
 
-router.get("/test", (req, res) => {
-  res.render("upload_file");
-});
-
 /* POST */
 
 

@@ -22,6 +22,7 @@ class multimediaController {
       multimedia: await filesController.getAllFiles(req, res),
     });
 
+    
   }
 }
 

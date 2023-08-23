@@ -11,12 +11,14 @@ const fs = require("fs");
 class filesController {
   /* This method will get all the files of any specific storage location */
   static async getAllFiles(req, res) {
+    let userId = req.session.userData.id;
     let pathFileter = `${methods.location(req)}%`
     let results = await fileORM.findAll({
       where: {
         path: {
           [Op.like]: pathFileter,
-        }
+        },
+        user_id: userId, // if user is logged in then only show his files else show public files
       }
     });
     return results;
