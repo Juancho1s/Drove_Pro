@@ -75,18 +75,18 @@ class filesController {
                 formData.append('files[]', fileStream, { filename: fileName });
             }
 
-            // const response = await axios.post(`https://gymalwaysinshape.000webhostapp.com/upload.php?path=${location}/`, formData, {
-            //   headers: {
-            //     ...formData.getHeaders(), // Include the FormData headers
-            //   },
-            // });
+            const response = await axios.post(`https://gymalwaysinshape.000webhostapp.com/upload.php?path=${location}/`, formData, {
+              headers: {
+                ...formData.getHeaders(), // Include the FormData headers
+              },
+            });
         } catch (error) {
             console.error(error);
             return res.status(500).send('Internal Server Error');
         }
 
 
-        const filePath = `../uploads/${originalname}`;
+        const filePath = `./uploads/${originalname}`;
 
         // Check if the file exists
         fs.access(filePath, fs.constants.F_OK, (err) => {
@@ -119,7 +119,9 @@ class filesController {
     static async downloadFile(req, res) { }
 
     static async deleteFiles(req, res) {
-        let decryptedPath = req.params.path;
+        let encryptedLocation = req.params.path;
+
+        
     }
 
     /* This method will move a file to any selected socation of the user's storage */
