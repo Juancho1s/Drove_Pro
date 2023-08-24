@@ -82,7 +82,6 @@ class filesController {
             });
         } catch (error) {
             console.error(error);
-            return res.status(500).send('Internal Server Error');
         }
 
 
@@ -121,7 +120,7 @@ class filesController {
     static async deleteFiles(req, res) {
         let encryptedLocation = req.params.path;
 
-        
+
     }
 
     /* This method will move a file to any selected socation of the user's storage */

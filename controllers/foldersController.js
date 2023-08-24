@@ -122,8 +122,8 @@ class foldersController {
     const resutls = await folderORM.create({
       id_user: userId,
       name: newRoot,
-      filesIn: {},
-      foldersIn: {},
+      filesIn: [],
+      foldersIn: [],
       folderBeforePath: "",
       path: newRoot,
     });
